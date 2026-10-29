@@ -1,6 +1,7 @@
 package dev.bieelg18.GerenciamentoAlunosPilates.model.entity.anamnese;
 
 import dev.bieelg18.GerenciamentoAlunosPilates.model.entity.aluno.Aluno;
+import dev.bieelg18.GerenciamentoAlunosPilates.model.entity.professor.Professor;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -164,5 +165,9 @@ public class Anamnese {
     @OneToOne
     @JoinColumn(name = "aluno_id", nullable = false, unique = true)
     private Aluno aluno;
+
+    @ManyToOne
+    @JoinColumn(name = "professor_id", nullable = false)
+    private Professor professor;
 
 }

@@ -1,5 +1,6 @@
 package dev.bieelg18.GerenciamentoAlunosPilates.model.entity.professor;
 
+import dev.bieelg18.GerenciamentoAlunosPilates.model.entity.anamnese.Anamnese;
 import dev.bieelg18.GerenciamentoAlunosPilates.model.entity.fichaAula.FichaDeAula;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -27,7 +28,7 @@ public class Professor {
     @Column(unique = true, nullable = false)
     private String email;
 
-    @Column(nullable = false)
+    @Column(name = "senha_hash", nullable = false)
     private String senhaHash;
 
     @Enumerated(EnumType.STRING)
@@ -39,5 +40,8 @@ public class Professor {
 
     @OneToMany(mappedBy = "professor")
     private List<FichaDeAula> fichaDeAulas;
+
+    @OneToMany(mappedBy = "professor")
+    private List<Anamnese> anamnese;
 
 }
