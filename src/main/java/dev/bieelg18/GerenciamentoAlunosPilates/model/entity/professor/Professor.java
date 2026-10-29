@@ -34,6 +34,7 @@ public class Professor {
     @Column(nullable = false)
     private Turno turno;
 
+    @Column(nullable = false)
     private boolean ativo = true;
 
     @OneToMany(mappedBy = "professor")
