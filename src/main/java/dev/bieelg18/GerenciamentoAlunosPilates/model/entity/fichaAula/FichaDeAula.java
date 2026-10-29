@@ -31,6 +31,15 @@ public class FichaDeAula {
 
     @ElementCollection
     @CollectionTable(
+            name = "tb_aparelhos_ficha",
+            joinColumns = @JoinColumn(name = "ficha_aula_id")
+    )
+    @Column(name = "aparelho")
+    @Enumerated(EnumType.STRING)
+    private Set<Aparelhos> aparelhos = new HashSet<>();
+
+    @ElementCollection
+    @CollectionTable(
             name = "tb_atividades_ficha",
             joinColumns = @JoinColumn(name = "ficha_aula_id")
     )
