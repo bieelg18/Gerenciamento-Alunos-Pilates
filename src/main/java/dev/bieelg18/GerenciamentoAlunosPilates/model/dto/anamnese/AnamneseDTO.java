@@ -1,0 +1,57 @@
+package dev.bieelg18.GerenciamentoAlunosPilates.model.dto.anamnese;
+
+import dev.bieelg18.GerenciamentoAlunosPilates.model.entity.anamnese.Frequencia;
+
+import java.time.LocalDate;
+
+public record AnamneseDTO(
+        Integer id,
+        LocalDate dataAvaliacao,
+        boolean cervicalgia,
+        boolean lombalgia,
+        boolean dorsalgia,
+        boolean herniaDeDiscoCervical,
+        boolean herniaDeDiscoLombar,
+        boolean protrusaoDiscal,
+        boolean escoliose,
+        boolean hipercifose,
+        boolean hiperlordose,
+        boolean retificacaoCervical,
+        boolean retificacaoLombar,
+        boolean espondilolistese,
+        boolean espondiliteAnquilosante,
+        boolean artrose,
+        boolean osteoporose,
+        boolean fibromialgia,
+        boolean tendinite,
+        boolean bursite,
+        boolean capsuliteAdesiva,
+        boolean lesaoDoManguitoRotador,
+        boolean epicondilite,
+        boolean pubalgia,
+        boolean condromalaciaPatelar,
+        boolean lesaoMeniscal,
+        boolean lesaoDeLCA,
+        boolean fascitePlantar,
+        boolean entorseDeTornozelo,
+        boolean pePlano,
+        boolean peCavo,
+        boolean avc,
+        boolean escleroseMultipla,
+        boolean neuropatia,
+        String outrasCondicoesClinicas,
+        String cirurgias,
+        boolean reducaoDaDor,
+        boolean correcaoPostural,
+        boolean ganhoDeForca,
+        boolean ganhoDeFlexibilidade,
+        boolean equilibrio,
+        boolean condicionamentoFisico,
+        boolean reabilitacao,
+        boolean emagrecimento,
+        boolean qualidadeDeVida,
+        String outrosObjetivosDoPaciente,
+        Frequencia frequencia,
+        String observacoes
+) {
+}
