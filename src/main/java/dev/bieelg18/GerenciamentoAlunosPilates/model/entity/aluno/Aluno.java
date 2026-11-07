@@ -2,6 +2,7 @@ package dev.bieelg18.GerenciamentoAlunosPilates.model.entity.aluno;
 
 import dev.bieelg18.GerenciamentoAlunosPilates.model.entity.anamnese.Anamnese;
 import dev.bieelg18.GerenciamentoAlunosPilates.model.entity.fichaAula.FichaDeAula;
+import dev.bieelg18.GerenciamentoAlunosPilates.model.entity.professor.Professor;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
