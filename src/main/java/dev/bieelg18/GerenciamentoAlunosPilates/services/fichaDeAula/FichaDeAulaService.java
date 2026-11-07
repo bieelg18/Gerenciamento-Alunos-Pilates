@@ -74,6 +74,16 @@ public class FichaDeAulaService {
                 .toList();
     }
 
+    //Método para buscar uma ficha de aula pelo id
+    @Transactional(readOnly = true)
+    public FichaDeAulaDTO fichaAulaID(Integer id){
+        FichaDeAula ficha = repository.findById(id)
+                .orElseThrow(() -> new RecursoNaoEncontradoException(
+                        "Ficha de aula não encontrada"
+                ));
+        return fichaDeAulaMapper.toDTO(ficha);
+    }
+
     //Método para editar uma ficha de aluna do aluno
     @Transactional
     public FichaDeAulaDTO editarFichaAula(Integer id, CriarFichaAulaDTO dto) {
