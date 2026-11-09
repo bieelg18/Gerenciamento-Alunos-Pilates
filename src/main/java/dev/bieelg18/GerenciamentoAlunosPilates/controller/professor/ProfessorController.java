@@ -4,8 +4,7 @@ import dev.bieelg18.GerenciamentoAlunosPilates.model.dto.professor.AlterarSenhaD
 import dev.bieelg18.GerenciamentoAlunosPilates.services.professor.ProfessorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/professor")
@@ -15,7 +14,9 @@ public class ProfessorController {
     private final ProfessorService service;
 
     //Endpoint para alterar a senha de cadastro de um professor
-    public String alterarSenha(Authentication authentication, AlterarSenhaDTO dto){
+    @PatchMapping("/senha")
+    public String alterarSenha(Authentication authentication, @RequestBody AlterarSenhaDTO dto){
+        System.out.println("CHEGOU NO CONTROLLER");
         return service.alterarSenha(authentication, dto);
     }
 
