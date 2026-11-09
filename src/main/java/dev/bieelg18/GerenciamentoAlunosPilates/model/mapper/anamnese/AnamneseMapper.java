@@ -8,6 +8,9 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface AnamneseMapper {
 
+    @Mapping(target = "idProfessor", source = "professor.id")
+    @Mapping(target = "nomeProfessor", source = "professor.nome")
+    @Mapping(target = "turno", source = "professor.turno")
     AnamneseDTO toDTO(Anamnese anamnese);
 
     Anamnese toEntity(AnamneseDTO dto);

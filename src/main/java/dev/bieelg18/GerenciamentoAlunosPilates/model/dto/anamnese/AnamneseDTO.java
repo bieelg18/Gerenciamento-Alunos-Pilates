@@ -1,6 +1,7 @@
 package dev.bieelg18.GerenciamentoAlunosPilates.model.dto.anamnese;
 
 import dev.bieelg18.GerenciamentoAlunosPilates.model.entity.anamnese.Frequencia;
+import dev.bieelg18.GerenciamentoAlunosPilates.model.entity.professor.Turno;
 
 import java.time.LocalDate;
 
@@ -52,6 +53,9 @@ public record AnamneseDTO(
         boolean qualidadeDeVida,
         String outrosObjetivosDoPaciente,
         Frequencia frequencia,
-        String observacoes
+        String observacoes,
+        Integer idProfessor,
+        String nomeProfessor,
+        Turno turno
 ) {
 }
