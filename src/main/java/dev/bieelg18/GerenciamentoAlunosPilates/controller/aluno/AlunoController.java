@@ -1,6 +1,7 @@
 package dev.bieelg18.GerenciamentoAlunosPilates.controller.aluno;
 
 import dev.bieelg18.GerenciamentoAlunosPilates.model.dto.aluno.AlunoDTO;
+import dev.bieelg18.GerenciamentoAlunosPilates.model.dto.aluno.AlunoResumoDTO;
 import dev.bieelg18.GerenciamentoAlunosPilates.model.dto.aluno.CriarAlunoDTO;
 import dev.bieelg18.GerenciamentoAlunosPilates.services.aluno.AlunoService;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +24,7 @@ public class AlunoController {
 
     //Endpoint para listar todos os alunos cadastrados
     @GetMapping("/all")
-    public List<AlunoDTO> listarAlunos(){
+    public List<AlunoResumoDTO> listarAlunos(){
         return service.listarAlunos();
     }
 
@@ -34,8 +35,8 @@ public class AlunoController {
     }
 
     //Endpoint para listar alunos pelo nome
-    @GetMapping("/all/")
-    public List<AlunoDTO> alunoNome(@RequestParam String nome){
+    @GetMapping("/buscar")
+    public List<AlunoResumoDTO> alunoNome(@RequestParam String nome){
         return service.alunoNome(nome);
     }
 
