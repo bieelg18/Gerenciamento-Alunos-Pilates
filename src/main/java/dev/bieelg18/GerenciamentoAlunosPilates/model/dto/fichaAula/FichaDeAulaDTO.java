@@ -3,6 +3,7 @@ package dev.bieelg18.GerenciamentoAlunosPilates.model.dto.fichaAula;
 import dev.bieelg18.GerenciamentoAlunosPilates.model.entity.fichaAula.Aparelhos;
 import dev.bieelg18.GerenciamentoAlunosPilates.model.entity.fichaAula.AvaliacaoPowerHouse;
 import dev.bieelg18.GerenciamentoAlunosPilates.model.entity.fichaAula.EstadoDor;
+import dev.bieelg18.GerenciamentoAlunosPilates.model.entity.professor.Turno;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 
@@ -21,6 +22,9 @@ public record FichaDeAulaDTO(
         @Max(10)
         Integer escalaDor,
         EstadoDor condicaoDorFinal,
-        String observacoes
+        String observacoes,
+        Integer idProfessor,
+        String nomeProfessor,
+        Turno turno
 ) {
 }

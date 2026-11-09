@@ -12,6 +12,9 @@ import org.mapstruct.MappingTarget;
 collectionMappingStrategy = CollectionMappingStrategy.SETTER_PREFERRED)
 public interface FichaDeAulaMapper {
 
+    @Mapping(target = "idProfessor", source = "professor.id")
+    @Mapping(target = "nomeProfessor", source = "professor.nome")
+    @Mapping(target = "turno", source = "professor.turno")
     FichaDeAulaDTO toDTO(FichaDeAula fichaDeAula);
 
     FichaDeAula toEntity(FichaDeAulaDTO dto);
