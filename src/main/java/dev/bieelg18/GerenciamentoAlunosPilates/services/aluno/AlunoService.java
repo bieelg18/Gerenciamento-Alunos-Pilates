@@ -2,9 +2,11 @@ package dev.bieelg18.GerenciamentoAlunosPilates.services.aluno;
 
 import dev.bieelg18.GerenciamentoAlunosPilates.exception.RecursoNaoEncontradoException;
 import dev.bieelg18.GerenciamentoAlunosPilates.model.dto.aluno.AlunoDTO;
+import dev.bieelg18.GerenciamentoAlunosPilates.model.dto.aluno.AlunoResumoDTO;
 import dev.bieelg18.GerenciamentoAlunosPilates.model.dto.aluno.CriarAlunoDTO;
 import dev.bieelg18.GerenciamentoAlunosPilates.model.entity.aluno.Aluno;
 import dev.bieelg18.GerenciamentoAlunosPilates.model.mapper.aluno.AlunoMapper;
+import dev.bieelg18.GerenciamentoAlunosPilates.model.mapper.aluno.AlunoResumoMapper;
 import dev.bieelg18.GerenciamentoAlunosPilates.model.mapper.aluno.CriarAlunoMapper;
 import dev.bieelg18.GerenciamentoAlunosPilates.repository.aluno.AlunoRepository;
 import dev.bieelg18.GerenciamentoAlunosPilates.repository.professor.ProfessorRepository;
@@ -23,6 +25,7 @@ public class AlunoService {
     private final ProfessorRepository professorRepository;
     private final CriarAlunoMapper criarAlunoMapper;
     private final AlunoMapper alunoMapper;
+    private final AlunoResumoMapper alunoResumoMapper;
 
     //Método para cadastrar um novo aluno
     @Transactional
@@ -34,10 +37,10 @@ public class AlunoService {
 
     //Método para listar todos os alunos cadastrados
     @Transactional(readOnly = true)
-    public List<AlunoDTO> listarAlunos(){
-        List<Aluno> alunos = repository.findAll();
+    public List<AlunoResumoDTO> listarAlunos(){
+        List<Aluno> alunos = repository.findAllByOrderByNomeAsc();
         return alunos.stream()
-                .map(alunoMapper::toDTO)
+                .map(alunoResumoMapper::toDTO)
                 .toList();
     }
 
@@ -53,10 +56,10 @@ public class AlunoService {
 
     //Método para buscar alunos pelo nome
     @Transactional(readOnly = true)
-    public List<AlunoDTO> alunoNome(String nome){
-        List<Aluno> alunos = repository.findByNomeContainingIgnoreCase(nome);
+    public List<AlunoResumoDTO> alunoNome(String nome){
+        List<Aluno> alunos = repository.findByNomeContainingIgnoreCaseOrderByNomeAsc(nome);
         return alunos.stream()
-                .map(alunoMapper::toDTO)
+                .map(alunoResumoMapper::toDTO)
                 .toList();
     }
 
