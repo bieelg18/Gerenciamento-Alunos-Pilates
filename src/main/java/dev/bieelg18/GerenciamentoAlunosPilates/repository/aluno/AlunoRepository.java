@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface AlunoRepository extends JpaRepository<Aluno, Integer> {
 
-    List<Aluno> findByNomeContainingIgnoreCase(String nome);
+    List<Aluno> findByNomeContainingIgnoreCaseOrderByNomeAsc(String nome);
+
+    List<Aluno> findAllByOrderByNomeAsc();
 
 }
