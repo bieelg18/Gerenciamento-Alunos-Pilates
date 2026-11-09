@@ -60,6 +60,24 @@ public class SecurityConfig {
                         .authenticationEntryPoint(naoAutenticadoHandler))
 
                 .authorizeHttpRequests(auth -> auth
+                        //Arquivos publicos do frontend
+                        .requestMatchers(
+                                "/",
+                                "/index.html",
+                                "/dashboard.html",
+                                "/alunos/novo.html",
+                                "/alunos/detalhes.html",
+                                "/alunos/anamnese-nova.html",
+                                "/alunos/ficha-aula-nova.html",
+                                "/alunos/fichas-aula.html",
+                                "/alunos.html",
+                                "/css/**",
+                                "/js/**",
+                                "/img/**",
+                                "/favicon.ico"
+                        )
+                        .permitAll()
+
                         //Rota publica de login
                         .requestMatchers(HttpMethod.POST, "/auth/login")
                         .permitAll()
@@ -74,5 +92,7 @@ public class SecurityConfig {
                 );
         return http.build();
     }
+
+
 
 }
