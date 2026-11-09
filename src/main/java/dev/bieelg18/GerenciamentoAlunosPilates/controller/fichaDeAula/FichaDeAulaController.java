@@ -25,7 +25,7 @@ public class FichaDeAulaController {
 
     //Endpoint para listar todas as fichas de aula de um aluno
     @GetMapping("/aluno/{id}/all")
-    public List<FichaDeAulaDTO> listarFichasDeAula(@PathVariable Integer idAluno){
+    public List<FichaDeAulaDTO> listarFichasDeAula(@PathVariable("id") Integer idAluno){
         return service.listarFichasDeAula(idAluno);
     }
 

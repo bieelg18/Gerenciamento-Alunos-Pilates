@@ -23,7 +23,7 @@ public class AnamneseController {
 
     //Endpoint para buscar uma ficha de anamnese de um aluno pelo id do aluno
     @GetMapping("/aluno/{id}")
-    public AnamneseDTO buscarFichaAluno(@PathVariable Integer idAluno){
+    public AnamneseDTO buscarFichaAluno(@PathVariable("id") Integer idAluno){
         return service.buscarFichaAluno(idAluno);
     }
 
