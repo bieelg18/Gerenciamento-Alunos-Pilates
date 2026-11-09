@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f5f4ef">
+    <meta name="description" content="Consulte os alunos cadastrados no Movimento+.">
+    <title>Alunos | Movimento+</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/alunos.css">
+    <script src="/js/api.js" defer></script>
+    <script src="/js/alunos.js" defer></script>
+    <link rel="stylesheet" href="/css/alterar-senha.css">
+
+    <script src="/js/api.js" defer></script>
+    <script src="/js/alterar-senha.js" defer></script>
+</head>
+<body>
+    <header class="topbar">
+        <div class="topbar__inner">
+            <a class="brand" href="/dashboard.html" aria-label="Movimento+ - página inicial">
+                <span class="brand__mark" aria-hidden="true">
+                    <svg viewBox="0 0 48 48" fill="none">
+                        <path d="M24 5.5C17.8 13.1 12 19.3 12 27.2a12 12 0 0 0 24 0C36 19.3 30.2 13.1 24 5.5Z"/>
+                        <path d="M17.5 28.2c1.4-4.1 4-7.2 7.8-9.3M20.5 34.1c3.7-.2 6.6-2.1 8.7-5.7"/>
+                    </svg>
+                </span>
+                <span class="brand__name">movimento<span>+</span></span>
+            </a>
+
+            <nav class="desktop-nav" aria-label="Navegação principal">
+                <button class="nav-link" type="button" data-action="change-password">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.2"></circle><path d="M5.5 19c.7-3.1 3-4.8 6.5-4.8s5.8 1.7 6.5 4.8"></path></svg>
+                    Alterar senha
+                </button>
+                <span class="nav-divider" aria-hidden="true"></span>
+                <button class="nav-link nav-link--logout" type="button" data-action="logout">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 4H5.5A1.5 1.5 0 0 0 4 5.5v13A1.5 1.5 0 0 0 5.5 20H10"></path><path d="M14 16l4-4-4-4M18 12H9"></path></svg>
+                    Sair
+                </button>
+            </nav>
+
+            <button class="menu-toggle" id="menu-toggle" type="button"
+                    aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+
+        <nav class="mobile-menu" id="mobile-menu" aria-label="Menu mobile" hidden>
+            <button class="mobile-menu__item" type="button" data-action="change-password">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.2"></circle><path d="M5.5 19c.7-3.1 3-4.8 6.5-4.8s5.8 1.7 6.5 4.8"></path></svg>
+                Alterar senha
+            </button>
+            <button class="mobile-menu__item mobile-menu__item--logout" type="button" data-action="logout">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 4H5.5A1.5 1.5 0 0 0 4 5.5v13A1.5 1.5 0 0 0 5.5 20H10"></path><path d="M14 16l4-4-4-4M18 12H9"></path></svg>
+                Sair
+            </button>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="breadcrumb">
+            <a href="/dashboard.html">Início</a>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg>
+            <span>Alunos</span>
+        </div>
+
+        <section class="page-heading">
+            <div>
+                <span class="eyebrow"><span></span> ACOMPANHAMENTO</span>
+                <h1>Alunos <em>cadastrados</em></h1>
+                <p>Encontre um aluno e acesse suas informações.</p>
+            </div>
+            <a class="new-student-button" href="/alunos/novo.html">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"></path></svg>
+                Novo aluno
+            </a>
+        </section>
+
+        <section class="students-panel" aria-label="Lista de alunos">
+            <div class="panel-toolbar">
+                <div class="list-title">
+                    <h2>Todos os alunos</h2>
+                    <span class="student-count" id="student-count" aria-live="polite">Carregando...</span>
+                </div>
+                <label class="search-box" for="student-search">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 4.5 4.5"></path></svg>
+                    <input id="student-search" type="search" placeholder="Pesquisar pelo nome..."
+                           autocomplete="off" aria-label="Pesquisar aluno pelo nome">
+                    <button class="clear-search" id="clear-search" type="button" aria-label="Limpar pesquisa" hidden>×</button>
+                </label>
+            </div>
+
+            <div class="list-status" id="list-status" role="status" aria-live="polite">
+                <span class="loading-spinner" aria-hidden="true"></span>
+                <span>Carregando alunos...</span>
+            </div>
+
+            <div class="students-list" id="students-list"></div>
+        </section>
+
+        <footer class="page-footer">
+            <span>movimento<span class="footer-plus">+</span></span>
+            <span class="footer-dot"></span>
+            <span>Gerenciamento Alunos Pilates</span>
+        </footer>
+    </main>
+
+    <dialog class="notice-dialog" id="change-password-dialog" aria-labelledby="dialog-title">
+        <form method="dialog" class="notice-dialog__content">
+            <button class="notice-dialog__close" type="submit" aria-label="Fechar">×</button>
+            <span class="notice-dialog__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><rect x="4.5" y="10" width="15" height="10" rx="2.2"></rect><path d="M8 10V7.2a4 4 0 0 1 8 0V10"></path></svg>
+            </span>
+            <h2 id="dialog-title">Alterar senha</h2>
+            <p>A tela de alteração de senha será conectada ao backend assim que definirmos o endpoint correspondente.</p>
+            <button class="dialog-button" type="submit">Entendi</button>
+        </form>
+    </dialog>
+</body>
+</html>

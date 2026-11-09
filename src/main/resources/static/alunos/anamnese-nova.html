@@ -1,0 +1,320 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f5f4ef">
+
+    <title>Nova anamnese | Movimento+</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/anamnese.css">
+
+    <script src="/js/api.js" defer></script>
+    <script src="/js/anamnese.js" defer></script>
+    <link rel="stylesheet" href="/css/alterar-senha.css">
+
+    <script src="/js/api.js" defer></script>
+    <script src="/js/alterar-senha.js" defer></script>
+</head>
+
+<body>
+
+<header class="topbar">
+    <div class="topbar__inner">
+
+        <a class="brand" href="/dashboard.html">
+            <span class="brand__mark">✧</span>
+            <span class="brand__name">movimento<span>+</span></span>
+        </a>
+
+        <a class="back-button" id="back-link" href="/alunos.html">
+            ← Voltar ao aluno
+        </a>
+
+    </div>
+</header>
+
+<main class="main-content">
+
+    <section class="page-heading">
+        <span class="eyebrow"><i></i> ACOMPANHAMENTO</span>
+
+        <h1>Ficha de <em>anamnese</em></h1>
+
+        <p>
+            Registre as condições clínicas, objetivos e plano terapêutico do aluno.
+        </p>
+    </section>
+
+    <section class="student-banner">
+
+        <div class="student-icon">✦</div>
+
+        <div class="student-info">
+            <span>ALUNO(A)</span>
+            <strong id="student-name">Identificando aluno...</strong>
+        </div>
+
+        <label class="date-field">
+            Data da avaliação
+
+            <input
+                    id="dataAvaliacao"
+                    name="dataAvaliacao"
+                    type="date"
+                    form="anamnese-form"
+                    required
+            >
+        </label>
+
+    </section>
+
+    <form id="anamnese-form" novalidate>
+
+        <!-- CONDIÇÕES CLÍNICAS -->
+
+        <section class="form-card">
+
+            <div class="section-title">
+                <b>01</b>
+
+                <div>
+                    <h2>Patologias / condições clínicas</h2>
+                    <p>Selecione todas as condições aplicáveis ao aluno.</p>
+                </div>
+            </div>
+
+            <div class="checkbox-grid">
+
+                <label><input type="checkbox" name="cervicalgia"> Cervicalgia</label>
+                <label><input type="checkbox" name="lombalgia"> Lombalgia</label>
+                <label><input type="checkbox" name="dorsalgia"> Dorsalgia</label>
+
+                <label><input type="checkbox" name="herniaDeDiscoCervical"> Hérnia de disco cervical</label>
+                <label><input type="checkbox" name="herniaDeDiscoLombar"> Hérnia de disco lombar</label>
+                <label><input type="checkbox" name="protrusaoDiscal"> Protrusão discal</label>
+
+                <label><input type="checkbox" name="escoliose"> Escoliose</label>
+                <label><input type="checkbox" name="hipercifose"> Hipercifose</label>
+                <label><input type="checkbox" name="hiperlordose"> Hiperlordose</label>
+
+                <label><input type="checkbox" name="retificacaoCervical"> Retificação cervical</label>
+                <label><input type="checkbox" name="retificacaoLombar"> Retificação lombar</label>
+                <label><input type="checkbox" name="espondilolistese"> Espondilolistese</label>
+
+                <label><input type="checkbox" name="espondiliteAnquilosante"> Espondilite anquilosante</label>
+                <label><input type="checkbox" name="artrose"> Artrose</label>
+                <label><input type="checkbox" name="osteoporose"> Osteoporose</label>
+
+                <label><input type="checkbox" name="fibromialgia"> Fibromialgia</label>
+                <label><input type="checkbox" name="tendinite"> Tendinite</label>
+                <label><input type="checkbox" name="bursite"> Bursite</label>
+
+                <label><input type="checkbox" name="capsuliteAdesiva"> Capsulite adesiva</label>
+                <label><input type="checkbox" name="lesaoDoManguitoRotador"> Lesão do manguito rotador</label>
+                <label><input type="checkbox" name="epicondilite"> Epicondilite</label>
+
+                <label><input type="checkbox" name="pubalgia"> Pubalgia</label>
+                <label><input type="checkbox" name="condromalaciaPatelar"> Condromalácia patelar</label>
+                <label><input type="checkbox" name="lesaoMeniscal"> Lesão meniscal</label>
+
+                <label><input type="checkbox" name="lesaoDeLCA"> Lesão de LCA</label>
+                <label><input type="checkbox" name="fascitePlantar"> Fascite plantar</label>
+                <label><input type="checkbox" name="entorseDeTornozelo"> Entorse de tornozelo</label>
+
+                <label><input type="checkbox" name="pePlano"> Pé plano</label>
+                <label><input type="checkbox" name="peCavo"> Pé cavo</label>
+                <label><input type="checkbox" name="avc"> AVC</label>
+
+                <label><input type="checkbox" name="escleroseMultipla"> Esclerose múltipla</label>
+                <label><input type="checkbox" name="neuropatia"> Neuropatia</label>
+
+            </div>
+
+            <div class="two-columns fields">
+
+                <label>
+                    Outras condições clínicas
+                    <input
+                            name="outrasCondicoesClinicas"
+                            maxlength="1000"
+                            placeholder="Descreva outras condições, se houver"
+                    >
+                </label>
+
+                <label>
+                    Cirurgias
+                    <input
+                            name="cirurgias"
+                            maxlength="1000"
+                            placeholder="Informe cirurgias anteriores, se houver"
+                    >
+                </label>
+
+            </div>
+
+        </section>
+
+        <!-- OBJETIVOS -->
+
+        <section class="form-card">
+
+            <div class="section-title">
+                <b>02</b>
+
+                <div>
+                    <h2>Objetivos do paciente</h2>
+                    <p>Quais são os principais objetivos com a prática do Pilates?</p>
+                </div>
+            </div>
+
+            <div class="checkbox-grid objectives">
+
+                <label><input type="checkbox" name="reducaoDaDor"> Redução da dor</label>
+                <label><input type="checkbox" name="correcaoPostural"> Correção postural</label>
+                <label><input type="checkbox" name="ganhoDeForca"> Ganho de força</label>
+
+                <label><input type="checkbox" name="ganhoDeFlexibilidade"> Ganho de flexibilidade</label>
+                <label><input type="checkbox" name="equilibrio"> Equilíbrio</label>
+                <label><input type="checkbox" name="condicionamentoFisico"> Condicionamento físico</label>
+
+                <label><input type="checkbox" name="reabilitacao"> Reabilitação</label>
+                <label><input type="checkbox" name="emagrecimento"> Emagrecimento</label>
+                <label><input type="checkbox" name="qualidadeDeVida"> Qualidade de vida</label>
+
+            </div>
+
+            <div class="fields">
+                <label>
+                    Outros objetivos
+                    <input
+                            name="outrosObjetivosDoPaciente"
+                            maxlength="1000"
+                            placeholder="Descreva outros objetivos, se houver"
+                    >
+                </label>
+            </div>
+
+        </section>
+
+        <!-- PLANO TERAPÊUTICO -->
+
+        <section class="form-card">
+
+            <div class="section-title">
+                <b>03</b>
+
+                <div>
+                    <h2>Plano terapêutico</h2>
+                    <p>Defina a frequência semanal planejada.</p>
+                </div>
+            </div>
+
+            <label class="frequency">
+                Frequência
+
+                <select name="frequencia" required>
+
+                    <option value="">Selecione a frequência</option>
+
+                    <option value="UMA_VEZ_POR_SEMANA">Uma vez por semana</option>
+                    <option value="DUAS_VEZES_POR_SEMANA">Duas vezes por semana</option>
+                    <option value="TRES_VEZES_POR_SEMANA">Três vezes por semana</option>
+                    <option value="QUATRO_VEZES_POR_SEMANA">Quatro vezes por semana</option>
+                    <option value="CINCO_VEZES_POR_SEMANA">Cinco vezes por semana</option>
+                    <option value="SEIS_VEZES_POR_SEMANA">Seis vezes por semana</option>
+
+                </select>
+            </label>
+
+        </section>
+
+        <!-- OBSERVAÇÕES -->
+
+        <section class="form-card">
+
+            <div class="section-title">
+                <b>04</b>
+
+                <div>
+                    <h2>Observações</h2>
+                    <p>Registre informações complementares relevantes para o acompanhamento.</p>
+                </div>
+            </div>
+
+            <label class="fields">
+                Observações gerais
+
+                <textarea
+                        name="observacoes"
+                        rows="7"
+                        maxlength="5000"
+                        placeholder="Escreva aqui as observações..."
+                ></textarea>
+            </label>
+
+        </section>
+
+        <p class="form-error" id="form-error" role="alert"></p>
+
+        <div class="form-actions">
+
+            <a class="secondary-button" id="cancel-link" href="/alunos.html">
+                Cancelar
+            </a>
+
+            <button class="primary-button" id="save-button" type="submit">
+                Salvar anamnese
+            </button>
+
+        </div>
+
+    </form>
+
+    <footer class="page-footer">
+        movimento<span>+</span> · Gerenciamento Alunos Pilates
+    </footer>
+
+</main>
+
+
+<dialog class="success-modal" id="success-modal">
+    <div class="success-modal__content">
+
+        <div class="success-modal__icon">
+            <svg viewBox="0 0 24 24" fill="none">
+                <path d="M5 12.5L10 17L19 7"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"/>
+            </svg>
+        </div>
+
+        <span class="success-modal__kicker">MOVIMENTO+</span>
+
+        <h2>Anamnese cadastrada!</h2>
+
+        <p>
+            A ficha de anamnese foi salva com sucesso.
+            Todas as informações já estão disponíveis no acompanhamento do aluno.
+        </p>
+
+        <button type="button"
+                class="primary-button"
+                id="success-back-button">
+            Voltar ao perfil do aluno
+        </button>
+
+    </div>
+</dialog>
+
+
+</body>
+</html>

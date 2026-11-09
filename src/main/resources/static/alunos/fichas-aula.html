@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f5f4ef">
+    <title>Histórico de aulas | Movimento+</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/fichas-aula.css">
+    <script src="/js/api.js" defer></script>
+    <script src="/js/fichas-aula.js" defer></script>
+    <link rel="stylesheet" href="/css/alterar-senha.css">
+
+    <script src="/js/api.js" defer></script>
+    <script src="/js/alterar-senha.js" defer></script>
+</head>
+<body>
+
+<header class="topbar">
+    <div class="topbar__inner">
+        <a class="brand" href="/dashboard.html">
+            <span class="brand__mark">
+                <svg viewBox="0 0 48 48" fill="none">
+                    <path d="M24 5.5C17.8 13.1 12 19.3 12 27.2a12 12 0 0 0 24 0C36 19.3 30.2 13.1 24 5.5Z"/>
+                    <path d="M17.5 28.2c1.4-4.1 4-7.2 7.8-9.3M20.5 34.1c3.7-.2 6.6-2.1 8.7-5.7"/>
+                </svg>
+            </span>
+            <span class="brand__name">movimento<span>+</span></span>
+        </a>
+
+        <button class="nav-link" type="button" id="logout-button">Sair</button>
+    </div>
+</header>
+
+<main class="main-content">
+
+    <div class="breadcrumb">
+        <a href="/dashboard.html">Início</a>
+        <span>›</span>
+        <a href="/alunos.html">Alunos</a>
+        <span>›</span>
+        <a id="profile-link" href="#">Perfil do aluno</a>
+        <span>›</span>
+        <span>Histórico de aulas</span>
+    </div>
+
+    <section class="page-heading">
+        <div>
+            <span class="eyebrow"><span></span> ACOMPANHAMENTO</span>
+            <h1>Histórico de <em>aulas</em></h1>
+            <p>Consulte as fichas e acompanhe a evolução do aluno.</p>
+        </div>
+
+        <a class="back-button" id="back-link" href="#">← Voltar ao perfil</a>
+    </section>
+
+    <section class="student-banner">
+        <div class="student-avatar" id="student-avatar">--</div>
+        <div>
+            <span>ALUNO</span>
+            <strong id="student-name">Carregando aluno...</strong>
+        </div>
+        <div class="lesson-counter">
+            <strong id="lesson-count">—</strong>
+            <span>FICHAS</span>
+        </div>
+    </section>
+
+    <section class="history-section">
+        <div class="history-heading">
+            <div>
+                <span class="section-kicker">REGISTROS DO ESTÚDIO</span>
+                <h2>Aulas registradas</h2>
+            </div>
+        </div>
+
+        <div id="history-list" class="history-list">
+            <div class="loading-state">
+                <span class="loading-spinner"></span>
+                Carregando histórico de aulas...
+            </div>
+        </div>
+    </section>
+
+    <footer class="page-footer">
+        <span>movimento<span>+</span></span>
+        <i></i>
+        <span>Gerenciamento Alunos Pilates</span>
+    </footer>
+
+</main>
+
+<dialog class="lesson-modal" id="lesson-modal">
+    <div class="lesson-modal__content">
+
+        <button class="modal-close" type="button" id="close-modal" aria-label="Fechar">×</button>
+
+        <span class="modal-kicker">ACOMPANHAMENTO DO ALUNO</span>
+        <h2>Ficha de aula</h2>
+        <p class="modal-description" id="modal-date"></p>
+
+        <div id="modal-details"></div>
+
+        <button class="primary-button modal-close-button" type="button" id="close-modal-bottom">
+            Fechar ficha
+        </button>
+
+    </div>
+</dialog>
+
+</body>
+</html>

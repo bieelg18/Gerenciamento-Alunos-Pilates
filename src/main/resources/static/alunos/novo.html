@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f5f4ef">
+    <meta name="description" content="Cadastro de aluno - Gerenciamento Alunos Pilates.">
+    <title>Novo aluno | Movimento+</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/novo-aluno.css">
+    <script src="../js/api.js" defer></script>
+    <script src="../js/novo-aluno.js" defer></script>
+    <link rel="stylesheet" href="/css/alterar-senha.css">
+
+    <script src="/js/api.js" defer></script>
+    <script src="/js/alterar-senha.js" defer></script>
+</head>
+<body>
+    <header class="topbar">
+        <div class="topbar__inner">
+            <a class="brand" href="/dashboard.html" aria-label="Movimento+ - página inicial">
+                <span class="brand__mark" aria-hidden="true">
+                    <svg viewBox="0 0 48 48" fill="none">
+                        <path d="M24 5.5C17.8 13.1 12 19.3 12 27.2a12 12 0 0 0 24 0C36 19.3 30.2 13.1 24 5.5Z"/>
+                        <path d="M17.5 28.2c1.4-4.1 4-7.2 7.8-9.3M20.5 34.1c3.7-.2 6.6-2.1 8.7-5.7"/>
+                    </svg>
+                </span>
+                <span class="brand__name">movimento<span>+</span></span>
+            </a>
+            <a class="back-link" href="/dashboard.html">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m7 7-7-7 7-7"/></svg>
+                Voltar ao início
+            </a>
+        </div>
+    </header>
+
+    <main class="page-content">
+        <div class="page-intro">
+            <span class="eyebrow"><span></span> NOVO CADASTRO</span>
+            <h1>Cadastrar <em>aluno</em></h1>
+            <p>Preencha as informações abaixo para adicionar um novo aluno ao estúdio.</p>
+        </div>
+
+        <form id="student-form" class="student-form" novalidate>
+            <section class="form-section">
+                <div class="section-heading">
+                    <span class="section-heading__number">01</span>
+                    <div>
+                        <h2>Informações pessoais</h2>
+                        <p>Dados básicos para identificação do aluno.</p>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="field field--full">
+                        <label for="nome">Nome completo <span>*</span></label>
+                        <input id="nome" name="nome" type="text" placeholder="Digite o nome completo"
+                               autocomplete="name" maxlength="150" required>
+                        <small class="field-error" id="nome-error"></small>
+                    </div>
+
+                    <div class="field">
+                        <label for="dataNascimento">Data de nascimento <span>*</span></label>
+                        <input id="dataNascimento" name="dataNascimento" type="date" required>
+                        <small class="field-error" id="dataNascimento-error"></small>
+                    </div>
+
+                    <fieldset class="field field--sex">
+                        <legend>Sexo <span>*</span></legend>
+                        <div class="sex-options">
+                            <label class="sex-option">
+                                <input type="radio" name="sexo" value="M" required>
+                                <span class="sex-option__visual">
+                                    <span class="custom-radio"></span>
+                                    Masculino
+                                </span>
+                            </label>
+                            <label class="sex-option">
+                                <input type="radio" name="sexo" value="F" required>
+                                <span class="sex-option__visual">
+                                    <span class="custom-radio"></span>
+                                    Feminino
+                                </span>
+                            </label>
+                        </div>
+                        <small class="field-error" id="sexo-error"></small>
+                    </fieldset>
+
+                    <div class="field">
+                        <label for="telefone">Telefone <span>*</span></label>
+                        <input id="telefone" name="telefone" type="tel" placeholder="(11) 99999-9999"
+                               autocomplete="tel" inputmode="numeric" maxlength="15" required>
+                        <small class="field-error" id="telefone-error"></small>
+                    </div>
+
+                    <div class="field">
+                        <label for="profissao">Profissão</label>
+                        <input id="profissao" name="profissao" type="text" placeholder="Ex.: Professora"
+                               autocomplete="organization-title" maxlength="120">
+                        <small class="field-error" id="profissao-error"></small>
+                    </div>
+
+                    <div class="field field--full">
+                        <label for="patologia">Patologia ou condição relevante</label>
+                        <textarea id="patologia" name="patologia" rows="4"
+                                  placeholder="Informe patologias, lesões ou outras condições relevantes..."
+                                  maxlength="2000"></textarea>
+                        <div class="field-hint">Campo opcional. Você poderá complementar as informações na anamnese.</div>
+                        <small class="field-error" id="patologia-error"></small>
+                    </div>
+                </div>
+                <p class="required-note"><span>*</span> Campos obrigatórios</p>
+            </section>
+
+            <div class="form-feedback" id="form-feedback" role="alert" aria-live="polite"></div>
+
+            <div class="form-actions">
+                <a class="cancel-button" href="/dashboard.html">Cancelar</a>
+                <button class="submit-button" id="submit-button" type="submit">
+                    <span class="submit-button__text">Cadastrar aluno</span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </button>
+            </div>
+        </form>
+
+        <footer class="page-footer">
+            <span>movimento<span>+</span></span>
+            <i></i>
+            <span>Gerenciamento Alunos Pilates</span>
+        </footer>
+    </main>
+
+    <dialog class="success-dialog" id="success-dialog" aria-labelledby="success-title">
+        <div class="success-dialog__content">
+            <span class="success-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7"/></svg>
+            </span>
+            <span class="success-eyebrow">CADASTRO CONCLUÍDO</span>
+            <h2 id="success-title">Aluno cadastrado!</h2>
+            <p>O aluno foi cadastrado com sucesso e já pode ser consultado na opção <strong>Ver alunos</strong>.</p>
+            <button class="success-button" id="success-confirm" type="button">Voltar à página principal</button>
+        </div>
+    </dialog>
+</body>
+</html>

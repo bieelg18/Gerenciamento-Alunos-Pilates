@@ -1,0 +1,353 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f5f4ef">
+    <title>Nova ficha de aula | Movimento+</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/ficha-aula.css">
+    <script src="/js/api.js" defer></script>
+    <script src="/js/ficha-aula.js" defer></script>
+    <link rel="stylesheet" href="/css/alterar-senha.css">
+
+    <script src="/js/api.js" defer></script>
+    <script src="/js/alterar-senha.js" defer></script>
+</head>
+<body>
+
+<header class="topbar">
+    <div class="topbar__inner">
+        <a class="brand" href="/dashboard.html">
+            <span class="brand__mark">
+                <svg viewBox="0 0 48 48" fill="none">
+                    <path d="M24 5.5C17.8 13.1 12 19.3 12 27.2a12 12 0 0 0 24 0C36 19.3 30.2 13.1 24 5.5Z"/>
+                    <path d="M17.5 28.2c1.4-4.1 4-7.2 7.8-9.3M20.5 34.1c3.7-.2 6.6-2.1 8.7-5.7"/>
+                </svg>
+            </span>
+            <span class="brand__name">movimento<span>+</span></span>
+        </a>
+
+        <button class="nav-link" type="button" id="logout-button">Sair</button>
+    </div>
+</header>
+
+<main class="main-content">
+
+    <div class="breadcrumb">
+        <a href="/dashboard.html">Início</a>
+        <span>›</span>
+        <a href="/alunos.html">Alunos</a>
+        <span>›</span>
+        <a id="profile-link" href="#">Perfil do aluno</a>
+        <span>›</span>
+        <span>Nova ficha de aula</span>
+    </div>
+
+    <section class="page-heading">
+        <div>
+            <span class="eyebrow"><span></span> ROTINA DO ESTÚDIO</span>
+            <h1>Nova ficha de <em>aula</em></h1>
+            <p>Registre as atividades e avaliações realizadas durante a aula.</p>
+        </div>
+
+        <a class="back-button" id="back-link" href="#">← Voltar ao perfil</a>
+    </section>
+
+    <section class="student-banner">
+        <div class="student-avatar">+</div>
+        <div>
+            <span>ALUNO</span>
+            <strong id="student-name">Carregando aluno...</strong>
+        </div>
+    </section>
+
+    <form id="ficha-form">
+
+        <section class="form-card">
+            <div class="card-heading">
+                <span class="section-kicker">INFORMAÇÕES DA AULA</span>
+                <h2>Dados iniciais</h2>
+                <p>Identifique a data e os aparelhos utilizados.</p>
+            </div>
+
+            <div class="form-grid">
+                <label class="field">
+                    Data da aula
+                    <input type="date" name="dataAula" id="dataAula" required>
+                </label>
+            </div>
+
+            <div class="field-group">
+                <span class="field-title">Aparelhos utilizados</span>
+                <p class="field-hint">Selecione todos os aparelhos utilizados nesta aula.</p>
+
+                <div class="choice-grid" id="aparelhos-container">
+                    <label class="choice-card">
+                        <input type="checkbox" name="aparelhos" value="REFORMER">
+                        <span>Reformer</span>
+                    </label>
+
+                    <label class="choice-card">
+                        <input type="checkbox" name="aparelhos" value="CADILLAC">
+                        <span>Cadillac</span>
+                    </label>
+
+                    <label class="choice-card">
+                        <input type="checkbox" name="aparelhos" value="CHAIR">
+                        <span>Chair</span>
+                    </label>
+
+                    <label class="choice-card">
+                        <input type="checkbox" name="aparelhos" value="BARREL">
+                        <span>Barrel</span>
+                    </label>
+
+                    <label class="choice-card">
+                        <input type="checkbox" name="aparelhos" value="SOLO">
+                        <span>Solo</span>
+                    </label>
+                </div>
+            </div>
+        </section>
+
+        <section class="form-card">
+            <div class="card-heading">
+                <span class="section-kicker">AVALIAÇÃO</span>
+                <h2>Power House</h2>
+                <p>Como estava a ativação e o controle do Power House?</p>
+            </div>
+
+            <div class="radio-grid">
+                <label class="radio-card">
+                    <input type="radio" name="avaliacaoPowerHouse" value="OTIMO" required>
+                    <span>Ótimo</span>
+                </label>
+
+                <label class="radio-card">
+                    <input type="radio" name="avaliacaoPowerHouse" value="BOM">
+                    <span>Bom</span>
+                </label>
+
+                <label class="radio-card">
+                    <input type="radio" name="avaliacaoPowerHouse" value="RUIM">
+                    <span>Ruim</span>
+                </label>
+            </div>
+        </section>
+
+        <section class="form-card">
+            <div class="card-heading">
+                <span class="section-kicker">PLANEJAMENTO E EXECUÇÃO</span>
+                <h2>Atividades realizadas</h2>
+                <p>Selecione as atividades trabalhadas em cada região corporal.</p>
+            </div>
+
+            <div id="atividades-container">
+
+                <div class="activity-group">
+                    <div class="activity-group__heading">
+                        <span class="region-number">01</span>
+                        <div>
+                            <h3>MMII</h3>
+                            <p>Membros inferiores</p>
+                        </div>
+                    </div>
+
+                    <div class="activity-grid">
+
+                        <div class="activity-region">
+                            <h4>Quadril</h4>
+                            <label><input type="checkbox" name="atividade" value="QUADRIL|ALONGAMENTO"> Alongamento</label>
+                            <label><input type="checkbox" name="atividade" value="QUADRIL|FORTALECIMENTO"> Fortalecimento</label>
+                            <label><input type="checkbox" name="atividade" value="QUADRIL|MOBILIDADE"> Mobilidade</label>
+                        </div>
+
+                        <div class="activity-region">
+                            <h4>Joelho</h4>
+                            <label><input type="checkbox" name="atividade" value="JOELHO|ALONGAMENTO"> Alongamento</label>
+                            <label><input type="checkbox" name="atividade" value="JOELHO|FORTALECIMENTO"> Fortalecimento</label>
+                            <label><input type="checkbox" name="atividade" value="JOELHO|MOBILIDADE"> Mobilidade</label>
+                        </div>
+
+                        <div class="activity-region">
+                            <h4>Tornozelo/Pé</h4>
+                            <label><input type="checkbox" name="atividade" value="TORNOZELO_PE|ALONGAMENTO"> Alongamento</label>
+                            <label><input type="checkbox" name="atividade" value="TORNOZELO_PE|FORTALECIMENTO"> Fortalecimento</label>
+                            <label><input type="checkbox" name="atividade" value="TORNOZELO_PE|MOBILIDADE"> Mobilidade</label>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="activity-group">
+                    <div class="activity-group__heading">
+                        <span class="region-number">02</span>
+                        <div>
+                            <h3>Tronco</h3>
+                            <p>Coluna vertebral</p>
+                        </div>
+                    </div>
+
+                    <div class="activity-region activity-region--horizontal">
+                        <label><input type="checkbox" name="atividade" value="TRONCO|ALONGAMENTO"> Alongamento</label>
+                        <label><input type="checkbox" name="atividade" value="TRONCO|FORTALECIMENTO"> Fortalecimento</label>
+                        <label><input type="checkbox" name="atividade" value="TRONCO|MOBILIDADE"> Mobilidade</label>
+                        <label><input type="checkbox" name="atividade" value="TRONCO|ESTABILIZACAO"> Estabilização</label>
+                        <label><input type="checkbox" name="atividade" value="TRONCO|CONTROLE_MOTOR"> Controle motor</label>
+                    </div>
+                </div>
+
+                <div class="activity-group">
+                    <div class="activity-group__heading">
+                        <span class="region-number">03</span>
+                        <div>
+                            <h3>MMSS</h3>
+                            <p>Membros superiores</p>
+                        </div>
+                    </div>
+
+                    <div class="activity-grid">
+
+                        <div class="activity-region">
+                            <h4>Cintura escapular</h4>
+                            <label><input type="checkbox" name="atividade" value="CINTURA_ESCAPULAR|ALONGAMENTO"> Alongamento</label>
+                            <label><input type="checkbox" name="atividade" value="CINTURA_ESCAPULAR|FORTALECIMENTO"> Fortalecimento</label>
+                            <label><input type="checkbox" name="atividade" value="CINTURA_ESCAPULAR|MOBILIDADE"> Mobilidade</label>
+                        </div>
+
+                        <div class="activity-region">
+                            <h4>Ombro</h4>
+                            <label><input type="checkbox" name="atividade" value="OMBRO|ALONGAMENTO"> Alongamento</label>
+                            <label><input type="checkbox" name="atividade" value="OMBRO|FORTALECIMENTO"> Fortalecimento</label>
+                            <label><input type="checkbox" name="atividade" value="OMBRO|MOBILIDADE"> Mobilidade</label>
+                        </div>
+
+                        <div class="activity-region">
+                            <h4>Cotovelo</h4>
+                            <label><input type="checkbox" name="atividade" value="COTOVELO|ALONGAMENTO"> Alongamento</label>
+                            <label><input type="checkbox" name="atividade" value="COTOVELO|FORTALECIMENTO"> Fortalecimento</label>
+                            <label><input type="checkbox" name="atividade" value="COTOVELO|MOBILIDADE"> Mobilidade</label>
+                        </div>
+
+                        <div class="activity-region">
+                            <h4>Punho/Mão</h4>
+                            <label><input type="checkbox" name="atividade" value="PUNHO_MAO|ALONGAMENTO"> Alongamento</label>
+                            <label><input type="checkbox" name="atividade" value="PUNHO_MAO|FORTALECIMENTO"> Fortalecimento</label>
+                            <label><input type="checkbox" name="atividade" value="PUNHO_MAO|MOBILIDADE"> Mobilidade</label>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="form-card">
+            <div class="card-heading">
+                <span class="section-kicker">ACOMPANHAMENTO</span>
+                <h2>Condição de dor</h2>
+                <p>Registre como o aluno chegou e como finalizou a aula.</p>
+            </div>
+
+            <div class="pain-block">
+                <h3>Como o aluno chegou?</h3>
+
+                <div class="radio-grid radio-grid--two">
+                    <label class="radio-card">
+                        <input type="radio" name="condicaoDorChegada" value="SEM_DOR" required>
+                        <span>Sem dor</span>
+                    </label>
+
+                    <label class="radio-card">
+                        <input type="radio" name="condicaoDorChegada" value="COM_DOR">
+                        <span>Com dor</span>
+                    </label>
+                </div>
+
+                <div id="pain-details" class="pain-details" hidden>
+                    <label class="field">
+                        Localização da dor
+                        <input type="text" name="localizacaoDorChegada" id="localizacaoDorChegada" maxlength="255" placeholder="Ex.: região lombar">
+                    </label>
+
+                    <div class="field">
+                        <span class="field-title">Escala da dor</span>
+                        <p class="field-hint">Selecione a intensidade da dor de 1 a 10.</p>
+
+                        <div class="pain-scale">
+                            <label><input type="radio" name="escalaDor" value="1"><span>1</span></label>
+                            <label><input type="radio" name="escalaDor" value="2"><span>2</span></label>
+                            <label><input type="radio" name="escalaDor" value="3"><span>3</span></label>
+                            <label><input type="radio" name="escalaDor" value="4"><span>4</span></label>
+                            <label><input type="radio" name="escalaDor" value="5"><span>5</span></label>
+                            <label><input type="radio" name="escalaDor" value="6"><span>6</span></label>
+                            <label><input type="radio" name="escalaDor" value="7"><span>7</span></label>
+                            <label><input type="radio" name="escalaDor" value="8"><span>8</span></label>
+                            <label><input type="radio" name="escalaDor" value="9"><span>9</span></label>
+                            <label><input type="radio" name="escalaDor" value="10"><span>10</span></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pain-block pain-block--final">
+                <h3>Como o aluno finalizou a aula?</h3>
+
+                <div class="radio-grid radio-grid--two">
+                    <label class="radio-card">
+                        <input type="radio" name="condicaoDorFinal" value="SEM_DOR" required>
+                        <span>Sem dor</span>
+                    </label>
+
+                    <label class="radio-card">
+                        <input type="radio" name="condicaoDorFinal" value="COM_DOR">
+                        <span>Com dor</span>
+                    </label>
+                </div>
+            </div>
+
+            <label class="field observations-field">
+                Observações
+                <textarea name="observacoes" rows="6" maxlength="3000" placeholder="Registre observações importantes sobre a aula..."></textarea>
+            </label>
+        </section>
+
+        <div class="form-error" id="form-error" role="alert"></div>
+
+        <div class="form-actions">
+            <a class="secondary-button" id="cancel-link" href="#">Cancelar</a>
+            <button class="primary-button" id="save-button" type="submit">
+                Salvar ficha de aula
+            </button>
+        </div>
+
+    </form>
+
+    <footer class="page-footer">
+        <span>movimento<span>+</span></span>
+        <i></i>
+        <span>Gerenciamento Alunos Pilates</span>
+    </footer>
+
+</main>
+
+<dialog class="success-modal" id="success-modal">
+    <div class="success-modal__content">
+        <div class="success-modal__icon">✓</div>
+        <span class="success-modal__kicker">MOVIMENTO+</span>
+        <h2>Ficha cadastrada!</h2>
+        <p>A ficha de aula foi salva com sucesso e já está disponível no histórico do aluno.</p>
+        <button class="primary-button" type="button" id="success-back-button">
+            Voltar ao perfil do aluno
+        </button>
+    </div>
+</dialog>
+
+</body>
+</html>

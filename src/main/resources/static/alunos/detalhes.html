@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f4ef">
+  <title>Perfil do aluno | Movimento+</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/perfil-aluno.css">
+  <script src="/js/api.js" defer></script>
+  <script src="/js/perfil-aluno.js" defer></script>
+  <link rel="stylesheet" href="/css/alterar-senha.css">
+
+  <script src="/js/api.js" defer></script>
+  <script src="/js/alterar-senha.js" defer></script>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="brand" href="/dashboard.html" aria-label="Movimento+, início">
+      <span class="brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 48 48" fill="none"><path d="M24 5.5C17.8 13.1 12 19.3 12 27.2a12 12 0 0 0 24 0C36 19.3 30.2 13.1 24 5.5Z"/><path d="M17.5 28.2c1.4-4.1 4-7.2 7.8-9.3M20.5 34.1c3.7-.2 6.6-2.1 8.7-5.7"/></svg>
+      </span>
+      <span class="brand__name">movimento<span>+</span></span>
+    </a>
+    <nav class="desktop-nav" aria-label="Navegação principal">
+      <button class="nav-link" type="button" data-action="change-password">Alterar senha</button>
+      <span class="nav-divider"></span>
+      <button class="nav-link nav-link--logout" type="button" data-action="logout">Sair</button>
+    </nav>
+    <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
+  </div>
+  <nav class="mobile-menu" id="mobile-menu" hidden>
+    <button type="button" data-action="change-password">Alterar senha</button>
+    <button type="button" data-action="logout">Sair</button>
+  </nav>
+</header>
+
+<main class="main-content">
+  <div class="breadcrumb"><a href="/dashboard.html">Início</a><span>›</span><a href="/alunos.html">Alunos</a><span>›</span><span>Perfil do aluno</span></div>
+
+  <section class="page-heading">
+    <div>
+      <span class="eyebrow"><span></span> ACOMPANHAMENTO</span>
+      <h1>Perfil do <em>aluno</em></h1>
+      <p>Consulte os dados cadastrais e acesse o acompanhamento.</p>
+    </div>
+    <a class="back-button" href="/alunos.html">← Voltar para alunos</a>
+  </section>
+
+  <section class="profile-card" aria-labelledby="student-name">
+    <div class="profile-card__heading">
+      <div class="avatar" id="student-avatar">--</div>
+      <div class="profile-title">
+        <span class="section-kicker">DADOS CADASTRAIS</span>
+        <h2 id="student-name">Carregando aluno...</h2>
+        <p id="student-profession">Buscando informações</p>
+      </div>
+      <button class="primary-button edit-button" id="edit-button" type="button" disabled>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 5 5 5M4 20l4.5-1 10.8-10.8a2.1 2.1 0 0 0-3-3L5.5 16 4 20Z"></path></svg>
+        Editar dados
+      </button>
+    </div>
+    <div class="profile-fields" id="profile-fields">
+      <div class="field"><span>Data de nascimento</span><strong id="student-birth">—</strong></div>
+      <div class="field"><span>Sexo</span><strong id="student-sex">—</strong></div>
+      <div class="field"><span>Telefone</span><strong id="student-phone">—</strong></div>
+      <div class="field"><span>Profissão</span><strong id="student-job">—</strong></div>
+      <div class="field field--wide"><span>Patologia / Observações clínicas</span><strong id="student-pathology">—</strong></div>
+    </div>
+  </section>
+
+  <section class="actions-section">
+    <div class="section-heading">
+      <div><span class="section-kicker">ROTINA DO ESTÚDIO</span><h2>Acompanhamento</h2></div>
+      <p>Escolha o que deseja fazer com este aluno.</p>
+    </div>
+    <div class="actions-grid">
+      <button class="action-card" type="button" data-placeholder="anamnese">
+        <span class="action-icon action-icon--sage"><svg viewBox="0 0 24 24"><path d="M7 3.8h7l4 4V20H7a2 2 0 0 1-2-2V5.8a2 2 0 0 1 2-2Z"/><path d="M14 4v4h4M9 12h6M9 16h6"/></svg></span>
+        <span class="action-copy"><strong>Preencher ficha anamnese</strong><small>Registrar informações iniciais do aluno</small></span>
+        <span class="action-arrow">›</span>
+      </button>
+      <button class="action-card" type="button" data-placeholder="nova-ficha">
+        <span class="action-icon action-icon--clay"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+        <span class="action-copy"><strong>Criar ficha de aula</strong><small>Registrar uma nova aula</small></span>
+        <span class="action-arrow">›</span>
+      </button>
+      <button class="action-card" type="button" data-placeholder="fichas">
+        <span class="action-icon action-icon--blue"><svg viewBox="0 0 24 24"><path d="M5 4.5h14v15H5zM8 8h8M8 12h8M8 16h5"/></svg></span>
+        <span class="action-copy"><strong>Ver fichas de aula</strong><small>Consultar o histórico de aulas</small></span>
+        <span class="action-arrow">›</span>
+      </button>
+    </div>
+  </section>
+
+  <section class="danger-section">
+    <div><strong>Zona de atenção</strong><p>A exclusão remove o cadastro deste aluno do sistema.</p></div>
+    <button class="danger-button" id="delete-button" type="button" disabled>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3m-9 0 1 13h10l1-13M10 11v5m4-5v5"/></svg>
+      Excluir aluno
+    </button>
+  </section>
+  <footer class="page-footer"><span>movimento<span>+</span></span><i></i><span>Gerenciamento Alunos Pilates</span></footer>
+</main>
+
+<dialog class="modal" id="edit-modal">
+  <form class="modal-content" id="edit-form">
+    <button class="modal-close" type="button" data-close="edit-modal" aria-label="Fechar">×</button>
+    <span class="modal-kicker">DADOS CADASTRAIS</span>
+    <h2>Editar aluno</h2>
+    <p class="modal-description">Atualize as informações cadastrais do aluno.</p>
+    <label>Nome completo<input name="nome" type="text" maxlength="150" required></label>
+    <div class="form-row">
+      <label>Data de nascimento<input name="dataNascimento" type="date" required></label>
+      <label>Sexo<select name="sexo" required><option value="">Selecione</option><option value="M">Masculino</option><option value="F">Feminino</option></select></label>
+    </div>
+    <label>Telefone<input name="telefone" type="tel" maxlength="30" placeholder="(11) 99999-9999"></label>
+    <label>Profissão<input name="profissao" type="text" maxlength="100"></label>
+    <label>Patologia<input name="patologia" type="text" maxlength="500"></label>
+    <p class="form-error" id="edit-error" role="alert"></p>
+    <button class="primary-button modal-submit" id="save-button" type="submit">Salvar alterações</button>
+  </form>
+</dialog>
+
+<dialog class="modal modal--small" id="delete-modal">
+  <div class="modal-content">
+    <button class="modal-close" type="button" data-close="delete-modal" aria-label="Fechar">×</button>
+    <span class="delete-symbol">!</span>
+    <h2>Excluir aluno?</h2>
+    <p class="modal-description">Tem certeza de que deseja excluir <strong id="delete-student-name">este aluno</strong>? Essa ação não poderá ser desfeita.</p>
+    <p class="form-error" id="delete-error" role="alert"></p>
+    <div class="modal-actions">
+      <button class="secondary-button" type="button" data-close="delete-modal">Cancelar</button>
+      <button class="danger-button" id="confirm-delete" type="button">Sim, excluir</button>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="modal modal--small" id="info-modal">
+  <div class="modal-content">
+    <button class="modal-close" type="button" data-close="info-modal" aria-label="Fechar">×</button>
+    <span class="delete-symbol delete-symbol--info">i</span>
+    <h2>Em breve</h2>
+    <p class="modal-description">Essa funcionalidade será conectada ao sistema na próxima etapa.</p>
+    <button class="primary-button modal-submit" type="button" data-close="info-modal">Entendi</button>
+  </div>
+</dialog>
+
+<dialog class="modal modal--small" id="change-password-dialog">
+  <div class="modal-content">
+    <button class="modal-close" type="button" data-close="change-password-dialog" aria-label="Fechar">×</button>
+    <h2>Alterar senha</h2>
+    <p class="modal-description">A funcionalidade de alteração de senha será implementada posteriormente.</p>
+    <button class="primary-button modal-submit" type="button" data-close="change-password-dialog">Entendi</button>
+  </div>
+</dialog>
+
+<dialog class="modal" id="anamnese-view-modal">
+  <div class="modal-content anamnese-view-content">
+    <button class="modal-close" type="button" data-close="anamnese-view-modal" aria-label="Fechar">×</button>
+
+    <span class="modal-kicker">ACOMPANHAMENTO DO ALUNO</span>
+    <h2>Ficha de anamnese</h2>
+    <p class="modal-description" id="anamnese-view-date"></p>
+
+    <div id="anamnese-view-content"></div>
+
+    <button class="primary-button modal-submit" type="button" data-close="anamnese-view-modal">
+      Fechar ficha
+    </button>
+  </div>
+</dialog>
+</body>
+</html>
