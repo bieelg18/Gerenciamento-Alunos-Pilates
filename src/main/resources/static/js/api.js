@@ -24,7 +24,7 @@ const API = {
 
         if (response.status === 401) {
             sessionStorage.removeItem("accessToken");
-            window.location.replace("/index.html");
+            window.location.replace("/login.html");
             throw new Error("Sua sessão expirou. Entre novamente.");
         }
 
@@ -33,6 +33,6 @@ const API = {
 
     logout() {
         sessionStorage.removeItem("accessToken");
-        window.location.replace("/index.html");
+        window.location.replace("/login.html");
     }
 };

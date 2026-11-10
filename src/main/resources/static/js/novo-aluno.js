@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // A página de cadastro só pode ser acessada após o login.
     if (!token) {
-        window.location.replace("/index.html");
+        window.location.replace("/login.html");
         return;
     }
 

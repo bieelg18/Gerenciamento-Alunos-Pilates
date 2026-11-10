@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Protege a página: sem token, volta para o login.
     if (!token) {
-        window.location.replace("/index.html");
+        window.location.replace("/login.html");
         return;
     }
 

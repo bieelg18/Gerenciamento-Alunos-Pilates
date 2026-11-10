@@ -1,148 +1,105 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#f5f4ef">
-    <meta name="description" content="Acesso ao sistema Gerenciamento Alunos Pilates.">
-    <title>Entrar | Gerenciamento Alunos Pilates</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/login.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f4ef">
+  <meta name="description" content="Movimento+ — gestão simples e acolhedora para estúdios de Pilates. Organize alunos, anamneses e fichas de aula em um só lugar.">
+  <title>Movimento+ | Gestão para estúdios de Pilates</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/landing.css">
+  <script src="js/landing.js" defer></script>
 </head>
 <body>
-    <main class="login-layout">
-        <section class="brand-panel" aria-label="Apresentação do sistema">
-            <div class="brand-panel__texture" aria-hidden="true"></div>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Navegação principal">
+      <a class="brand" href="/" aria-label="Movimento+ início">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M24 5.5C17.8 13.1 12 19.3 12 27.2a12 12 0 0 0 24 0C36 19.3 30.2 13.1 24 5.5Z" stroke="currentColor" stroke-width="1.8"/><path d="M17.5 28.2c1.4-4.1 4-7.2 7.8-9.3M20.5 34.1c3.7-.2 6.6-2.1 8.7-5.7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </span>
+        <span class="brand-name">movimento<span>+</span></span>
+      </a>
+      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span></button>
+      <div class="nav-links" id="nav-links">
+        <a href="#funcionalidades">Funcionalidades</a>
+        <a href="#beneficios">Benefícios</a>
+        <a href="#planos">Plano</a>
+        <a class="nav-login" href="/login.html">Acessar minha conta</a>
+      </div>
+    </nav>
+  </header>
 
-            <a class="brand" href="/" aria-label="Gerenciamento Alunos Pilates - início">
-                <span class="brand__mark" aria-hidden="true">
-                    <svg viewBox="0 0 48 48" fill="none">
-                        <path d="M24 5.5C17.8 13.1 12 19.3 12 27.2a12 12 0 0 0 24 0C36 19.3 30.2 13.1 24 5.5Z" stroke="currentColor" stroke-width="1.8"/>
-                        <path d="M17.5 28.2c1.4-4.1 4-7.2 7.8-9.3M20.5 34.1c3.7-.2 6.6-2.1 8.7-5.7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                    </svg>
-                </span>
-                <span class="brand__name">movimento<span>+</span></span>
-            </a>
+  <main>
+    <section class="hero container">
+      <div class="hero-copy">
+        <span class="eyebrow"><i></i> Gestão feita para o universo do Pilates</span>
+        <h1>Mais organização.<br>Mais tempo para o <em>movimento.</em></h1>
+        <p class="hero-lead">Uma forma simples e acolhedora de organizar a rotina do seu estúdio, acompanhar seus alunos e manter tudo em um só lugar.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#funcionalidades">Conheça a plataforma <span aria-hidden="true">→</span></a>
+          <a class="button button-secondary" href="/login.html">Já tenho acesso</a>
+        </div>
+        <div class="hero-note"><span class="check">✓</span> Praticidade para a gestão do seu estúdio, todos os dias.</div>
+      </div>
+      <div class="hero-visual" aria-label="Prévia ilustrativa do painel Movimento+">
+        <div class="visual-orbit orbit-one"></div><div class="visual-orbit orbit-two"></div>
+        <div class="dashboard-card">
+          <div class="dash-top"><div><span class="dash-kicker">MOVIMENTO+</span><strong>Visão geral</strong></div><span class="dash-avatar">M</span></div>
+          <div class="dash-welcome">Bom dia! <span>♡</span><small>Veja um resumo do seu estúdio.</small></div>
+          <div class="dash-stats">
+            <div class="stat"><span>Alunos</span><b>--</b><small>cadastrados</small></div>
+            <div class="stat"><span>Fichas de aula</span><b>--</b><small>organizadas</small></div>
+          </div>
+          <div class="dash-section-title">Rotina organizada</div>
+          <div class="dash-row"><span class="row-icon">✳</span><span><b>Alunos</b><small>Cadastros e informações</small></span><span class="row-arrow">↗</span></div>
+          <div class="dash-row"><span class="row-icon peach">♡</span><span><b>Anamneses</b><small>Informações importantes</small></span><span class="row-arrow">↗</span></div>
+          <div class="dash-row"><span class="row-icon sage">⌁</span><span><b>Fichas de aula</b><small>Acompanhamento das aulas</small></span><span class="row-arrow">↗</span></div>
+        </div>
+        <div class="floating-note"><span>✦</span><div><b>Tudo em seu lugar</b><small>Uma rotina mais leve</small></div></div>
+      </div>
+    </section>
 
-            <div class="brand-panel__content">
-                <span class="eyebrow"><span></span> Cuidado em cada movimento</span>
-                <h1>Organização que acompanha o <em>movimento.</em></h1>
-                <p>Um espaço simples e acolhedor para acompanhar alunos, avaliações e a evolução de cada aula.</p>
-            </div>
+    <section class="trust-strip">
+      <div class="container trust-inner"><span>FEITO PARA A ROTINA DE QUEM ENSINA PILATES</span><i></i><span>ALUNOS</span><i></i><span>ANAMNESES</span><i></i><span>FICHAS DE AULA</span></div>
+    </section>
 
-            <div class="wellness-art" aria-hidden="true">
-                <div class="wellness-art__sun"></div>
-                <div class="wellness-art__ring wellness-art__ring--one"></div>
-                <div class="wellness-art__ring wellness-art__ring--two"></div>
-                <div class="wellness-art__figure">
-                    <svg viewBox="0 0 420 330" fill="none">
-                        <path d="M76 281c55-31 105-38 151-23 42 13 77 11 117-14" stroke="#E7E4D8" stroke-width="3" stroke-linecap="round"/>
-                        <path d="M125 259c24-19 43-40 54-67 11-27 17-55 17-83" stroke="#34483F" stroke-width="15" stroke-linecap="round"/>
-                        <path d="M194 111c-17-12-21-31-10-45 10-13 29-13 39-1 9 11 6 29-7 41" fill="#C98768"/>
-                        <path d="M193 131c19 5 38 19 51 41l31 49" stroke="#34483F" stroke-width="15" stroke-linecap="round"/>
-                        <path d="M242 171c-28 7-52 4-72-9" stroke="#34483F" stroke-width="13" stroke-linecap="round"/>
-                        <path d="M276 221c-16 15-35 26-59 32" stroke="#34483F" stroke-width="14" stroke-linecap="round"/>
-                        <path d="M218 253c-18 15-38 23-61 24" stroke="#34483F" stroke-width="13" stroke-linecap="round"/>
-                        <path d="M145 280h-44M299 280h-47" stroke="#34483F" stroke-width="4" stroke-linecap="round"/>
-                        <path d="M184 100c-7-12-6-24 4-34" stroke="#34483F" stroke-width="5" stroke-linecap="round"/>
-                        <path d="M109 223c-17 9-30 23-38 41M317 111c13 13 19 28 18 45" stroke="#C98768" stroke-width="3" stroke-linecap="round"/>
-                        <circle cx="76" cy="117" r="5" fill="#C98768"/>
-                        <circle cx="337" cy="76" r="4" fill="#C98768"/>
-                    </svg>
-                </div>
-                <div class="wellness-art__caption">Movimento é qualidade de vida.</div>
-            </div>
+    <section class="section container" id="funcionalidades">
+      <div class="section-heading">
+        <span class="eyebrow">SUA GESTÃO, MAIS SIMPLES</span>
+        <h2>O essencial para cuidar<br>de cada <em>aluno.</em></h2>
+        <p>Ferramentas pensadas para apoiar a organização do estúdio e deixar as informações importantes sempre à mão.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card"><div class="feature-icon green">♧</div><span class="feature-number">01</span><h3>Cadastro de alunos</h3><p>Centralize os dados dos alunos e encontre as informações de forma prática.</p></article>
+        <article class="feature-card"><div class="feature-icon orange">♡</div><span class="feature-number">02</span><h3>Anamneses</h3><p>Registre informações relevantes para conhecer melhor cada aluno.</p></article>
+        <article class="feature-card"><div class="feature-icon sage">⌁</div><span class="feature-number">03</span><h3>Fichas de aula</h3><p>Organize os registros das aulas e acompanhe as informações ao longo do tempo.</p></article>
+      </div>
+    </section>
 
-            <div class="brand-panel__footer">GERENCIAMENTO ALUNOS PILATES <span>•</span> 2026</div>
-        </section>
+    <section class="benefits-section" id="beneficios">
+      <div class="container benefits-layout">
+        <div class="benefit-art"><div class="art-circle"></div><div class="art-line line-a"></div><div class="art-line line-b"></div><div class="art-leaf">〰</div><span class="art-caption">Cuidar também é organizar.</span></div>
+        <div class="benefit-copy"><span class="eyebrow">MAIS LEVEZA NA ROTINA</span><h2>Menos tempo procurando. Mais tempo <em>cuidando.</em></h2><p>O Movimento+ reúne recursos importantes da rotina do estúdio em uma plataforma intuitiva, para que você tenha mais clareza e organização no dia a dia.</p>
+          <ul class="benefit-list"><li><span>✓</span> Informações organizadas em um só lugar</li><li><span>✓</span> Acesso prático à rotina dos alunos</li><li><span>✓</span> Uma experiência simples e objetiva</li></ul>
+        </div>
+      </div>
+    </section>
 
-        <section class="form-panel" aria-labelledby="page-title">
-            <div class="form-panel__inner">
-                <div class="mobile-brand brand">
-                    <span class="brand__mark" aria-hidden="true">
-                        <svg viewBox="0 0 48 48" fill="none">
-                            <path d="M24 5.5C17.8 13.1 12 19.3 12 27.2a12 12 0 0 0 24 0C36 19.3 30.2 13.1 24 5.5Z" stroke="currentColor" stroke-width="1.8"/>
-                            <path d="M17.5 28.2c1.4-4.1 4-7.2 7.8-9.3M20.5 34.1c3.7-.2 6.6-2.1 8.7-5.7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                        </svg>
-                    </span>
-                    <span class="brand__name">movimento<span>+</span></span>
-                </div>
+    <section class="pricing-section container" id="planos">
+      <div class="pricing-card">
+        <div class="pricing-copy"><span class="eyebrow">UM PLANO, SEM COMPLICAÇÃO</span><h2>Seu estúdio em movimento.</h2><p>Tenha mais organização para acompanhar seus alunos e cuidar da rotina do seu espaço.</p></div>
+        <div class="price"><span>Por estúdio</span><strong>R$ 59<small>,90</small></strong><span>por mês</span><a class="button button-primary" href="https://wa.me/5511994427842?text=Ol%C3%A1!%20Quero%20conhecer%20o%20Movimento%2B%20para%20meu%20est%C3%BAdio." target="_blank" rel="noopener noreferrer">Tenho interesse <span aria-hidden="true">→</span></a></div>
+      </div>
+      <p class="pricing-footnote">Quer saber mais? Converse com a gente e conheça o Movimento+.</p>
+    </section>
 
-                <div class="form-heading">
-                    <span class="form-heading__overline">ÁREA RESTRITA</span>
-                    <h2 id="page-title">Boas-vindas!</h2>
-                    <p>Entre com suas credenciais para acessar o sistema.</p>
-                </div>
+    <section class="final-cta">
+      <div class="container final-cta-inner"><span class="eyebrow">MOVIMENTO+ • GESTÃO PARA PILATES</span><h2>Uma rotina mais organizada<br>começa com um <em>movimento.</em></h2><a class="button button-light" href="https://wa.me/5511994427842?text=Ol%C3%A1!%20Quero%20conhecer%20o%20Movimento%2B." target="_blank" rel="noopener noreferrer">Fale com a gente <span aria-hidden="true">↗</span></a></div>
+    </section>
+  </main>
 
-                <form id="login-form" class="login-form" novalidate>
-                    <div class="field">
-                        <label for="email">E-mail</label>
-                        <div class="field__control">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <rect x="3.5" y="5" width="17" height="14" rx="2.5"></rect>
-                                <path d="m4.5 7 7.5 6 7.5-6"></path>
-                            </svg>
-                            <input id="email" name="email" type="email" placeholder="seuemail@exemplo.com"
-                                   autocomplete="username" required maxlength="150">
-                        </div>
-                        <small class="field__error" id="email-error"></small>
-                    </div>
-
-                    <div class="field">
-                        <label for="senha">Senha</label>
-                        <div class="field__control">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <rect x="4.5" y="10" width="15" height="10" rx="2.2"></rect>
-                                <path d="M8 10V7.2a4 4 0 0 1 8 0V10M12 14v2.5"></path>
-                            </svg>
-                            <input id="senha" name="senha" type="password" placeholder="Digite sua senha"
-                                   autocomplete="current-password" required>
-                            <button class="password-toggle" type="button" id="toggle-password"
-                                    aria-label="Mostrar senha" aria-pressed="false">
-                                <svg viewBox="0 0 24 24" aria-hidden="true">
-                                    <path d="M2.5 12s3.4-6 9.5-6 9.5 6 9.5 6-3.4 6-9.5 6-9.5-6-9.5-6Z"></path>
-                                    <circle cx="12" cy="12" r="2.5"></circle>
-                                </svg>
-                            </button>
-                        </div>
-                        <small class="field__error" id="senha-error"></small>
-                    </div>
-
-                    <div class="form-message" id="form-message" role="alert" aria-live="polite"></div>
-
-                    <button class="submit-button" id="submit-button" type="submit">
-                        <span class="submit-button__text">Entrar</span>
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M5 12h14M13 6l6 6-6 6"></path>
-                        </svg>
-                    </button>
-                </form>
-
-                <div class="access-note">
-                    <span class="access-note__icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M12 3.5 20 7v5.2c0 4.2-3.1 7.1-8 8.8-4.9-1.7-8-4.6-8-8.8V7l8-3.5Z"></path>
-                            <path d="m9 12 2 2 4-4"></path>
-                        </svg>
-                    </span>
-                    <div>
-                        <strong>Precisa de acesso ou redefinir sua senha?</strong>
-                        <p>Entre em contato pelo WhatsApp:</p>
-                        <a href="https://wa.me/5511994427842?text=Ol%C3%A1!%20Preciso%20de%20ajuda%20com%20meu%20acesso%20ao%20sistema%20Gerenciamento%20Alunos%20Pilates."
-                           target="_blank" rel="noopener noreferrer"> (11) 99442-7842 <span aria-hidden="true">↗</span></a>
-                    </div>
-                </div>
-
-                <footer class="form-footer">
-                    <span>Gerenciamento Alunos Pilates</span>
-                    <span class="form-footer__dot"></span>
-                    <span>Acesso exclusivo para professoras</span>
-                </footer>
-            </div>
-        </section>
-    </main>
+  <footer class="site-footer"><div class="container footer-inner"><a class="brand" href="/"><span class="brand-mark"><svg viewBox="0 0 48 48" fill="none"><path d="M24 5.5C17.8 13.1 12 19.3 12 27.2a12 12 0 0 0 24 0C36 19.3 30.2 13.1 24 5.5Z" stroke="currentColor" stroke-width="1.8"/><path d="M17.5 28.2c1.4-4.1 4-7.2 7.8-9.3M20.5 34.1c3.7-.2 6.6-2.1 8.7-5.7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span class="brand-name">movimento<span>+</span></span></a><span>© 2026 Movimento+. Todos os direitos reservados.</span><a href="/login.html">Acessar minha conta</a></div></footer>
 </body>
 </html>
