@@ -23,20 +23,20 @@ public class AnamneseController {
 
     //Endpoint para buscar uma ficha de anamnese de um aluno pelo id do aluno
     @GetMapping("/aluno/{id}")
-    public AnamneseDTO buscarFichaAluno(@PathVariable("id") Integer idAluno){
-        return service.buscarFichaAluno(idAluno);
+    public AnamneseDTO buscarFichaAluno(@PathVariable("id") Integer idAluno, Authentication authentication){
+        return service.buscarFichaAluno(idAluno, authentication);
     }
 
     //Endpoint para editar uma ficha de anamnese já existente
     @PatchMapping("/{id}")
-    public String editarAnamnese(@RequestBody EditarAnamneseDTO dto, @PathVariable Integer id){
-        return service.editarAnamnese(dto, id);
+    public String editarAnamnese(@RequestBody EditarAnamneseDTO dto, @PathVariable Integer id, Authentication authentication){
+        return service.editarAnamnese(dto, id, authentication);
     }
 
     //Endpoint para deletar uma ficha de anamnese
     @DeleteMapping("/{id}")
-    public String deletarAnamnese(@PathVariable Integer id){
-        return service.deletarAnamnese(id);
+    public String deletarAnamnese(@PathVariable Integer id, Authentication authentication){
+        return service.deletarAnamnese(id, authentication);
     }
 
 }

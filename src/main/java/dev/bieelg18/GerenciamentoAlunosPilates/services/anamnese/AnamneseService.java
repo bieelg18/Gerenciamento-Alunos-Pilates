@@ -35,7 +35,7 @@ public class AnamneseService {
                 .orElseThrow(() -> new RecursoNaoEncontradoException(
                         "Professor autenticado não encontrado"
                 ));
-        Aluno aluno = alunoRepository.findById(dto.alunoId())
+        Aluno aluno = alunoRepository.findByIdAndEstudioId(dto.alunoId(), professor.getEstudio().getId())
                 .orElseThrow(() -> new RecursoNaoEncontradoException(
                         "Aluno não encontrado"
                 ));
@@ -48,8 +48,12 @@ public class AnamneseService {
 
     //Método para bsucar a ficha de anamnese de um aluno
     @Transactional(readOnly = true)
-    public AnamneseDTO buscarFichaAluno(Integer idAluno){
-        Anamnese anamnese = repository.findByAlunoId(idAluno)
+    public AnamneseDTO buscarFichaAluno(Integer idAluno, Authentication authentication){
+        Professor professor = professorRepository.findByEmail(authentication.getName())
+                .orElseThrow(() -> new RecursoNaoEncontradoException(
+                        "Professor autenticado não encontrado"
+                ));
+        Anamnese anamnese = repository.findByAlunoIdAndAlunoEstudioId(idAluno, professor.getEstudio().getId())
                 .orElseThrow(() -> new RecursoNaoEncontradoException(
                         "Anamnese não encontrada para o aluno informado"
                 ));
@@ -58,8 +62,12 @@ public class AnamneseService {
 
     //Método para editar uma ficha de anamnese já existente
     @Transactional
-    public String editarAnamnese(EditarAnamneseDTO dto, Integer id){
-        Anamnese anamnese = repository.findById(id)
+    public String editarAnamnese(EditarAnamneseDTO dto, Integer id, Authentication authentication){
+        Professor professor = professorRepository.findByEmail(authentication.getName())
+                .orElseThrow(() -> new RecursoNaoEncontradoException(
+                        "Professor autenticado não encontrado"
+                ));
+        Anamnese anamnese = repository.findByIdAndAlunoEstudioId(id, professor.getEstudio().getId())
                 .orElseThrow(() -> new RecursoNaoEncontradoException(
                         "Ficha de anamnese não encontrada"
                 ));
@@ -127,11 +135,15 @@ public class AnamneseService {
 
     //Método para deletar uma ficha de anamnese
     @Transactional
-    public String deletarAnamnese(Integer id){
-        Anamnese anamnese = repository.findById(id)
+    public String deletarAnamnese(Integer id, Authentication authentication){
+        Professor professor = professorRepository.findByEmail(authentication.getName())
                 .orElseThrow(() -> new RecursoNaoEncontradoException(
-                        "Ficha de anamnese não encontrada"
+                        "Professor autenticado não encontrado"
                 ));
+        Anamnese anamnese = repository.findByIdAndAlunoEstudioId(id, professor.getEstudio().getId())
+                        .orElseThrow(() -> new RecursoNaoEncontradoException(
+                                "Ficha de anamnese não encontrada"
+                        ));
         repository.delete(anamnese);
         return "Ficha de anamnese deletada com sucesso!";
     }

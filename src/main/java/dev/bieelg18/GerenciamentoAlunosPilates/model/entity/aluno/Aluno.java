@@ -1,6 +1,7 @@
 package dev.bieelg18.GerenciamentoAlunosPilates.model.entity.aluno;
 
 import dev.bieelg18.GerenciamentoAlunosPilates.model.entity.anamnese.Anamnese;
+import dev.bieelg18.GerenciamentoAlunosPilates.model.entity.estudio.Estudio;
 import dev.bieelg18.GerenciamentoAlunosPilates.model.entity.fichaAula.FichaDeAula;
 import dev.bieelg18.GerenciamentoAlunosPilates.model.entity.professor.Professor;
 import jakarta.persistence.*;
@@ -45,6 +46,10 @@ public class Aluno {
 
     @OneToOne(mappedBy = "aluno")
     private Anamnese anamnese;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "estudio_id", nullable = false)
+    private Estudio estudio;
 
     @OneToMany(mappedBy = "aluno")
     private List<FichaDeAula> fichas;

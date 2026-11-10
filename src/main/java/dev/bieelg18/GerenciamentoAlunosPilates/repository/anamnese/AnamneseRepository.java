@@ -7,6 +7,8 @@ import java.util.Optional;
 
 public interface AnamneseRepository extends JpaRepository<Anamnese, Integer> {
 
-    Optional<Anamnese> findByAlunoId(Integer id);
+    Optional<Anamnese> findByAlunoIdAndAlunoEstudioId(Integer alunoId, Long estudioId);
+
+    Optional<Anamnese> findByIdAndAlunoEstudioId(Integer id, Long estudioId);
 
 }

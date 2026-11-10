@@ -25,26 +25,26 @@ public class FichaDeAulaController {
 
     //Endpoint para listar todas as fichas de aula de um aluno
     @GetMapping("/aluno/{id}/all")
-    public List<FichaDeAulaDTO> listarFichasDeAula(@PathVariable("id") Integer idAluno){
-        return service.listarFichasDeAula(idAluno);
+    public List<FichaDeAulaDTO> listarFichasDeAula(@PathVariable("id") Integer idAluno, Authentication authentication){
+        return service.listarFichasDeAula(idAluno, authentication);
     }
 
     //Endpoint para retornar uma ficha de aula pelo id
     @GetMapping("/aluno/{id}")
-    public FichaDeAulaDTO fichaAulaID(@PathVariable Integer id){
-        return service.fichaAulaID(id);
+    public FichaDeAulaDTO fichaAulaID(@PathVariable Integer id, Authentication authentication){
+        return service.fichaAulaID(id, authentication);
     }
 
     //Endpoint para editar uma ficha de aula já existente
     @PutMapping("/{id}")
-    public FichaDeAulaDTO editarFichaAula(@PathVariable Integer id, @RequestBody CriarFichaAulaDTO dto){
-        return service.editarFichaAula(id, dto);
+    public FichaDeAulaDTO editarFichaAula(@PathVariable Integer id, @RequestBody CriarFichaAulaDTO dto, Authentication authentication){
+        return service.editarFichaAula(id, dto, authentication);
     }
 
     //Endpoint para deletar uma ficha de aula
     @DeleteMapping("/{id}")
-    public String deletarFichaAula(@PathVariable Integer id){
-        return service.deletarFichaAula(id);
+    public String deletarFichaAula(@PathVariable Integer id, Authentication authentication){
+        return service.deletarFichaAula(id, authentication);
     }
 
 }

@@ -39,7 +39,7 @@ public class FichaDeAulaService {
                 .orElseThrow(() -> new RecursoNaoEncontradoException(
                         "Professor não autenticado não encontrado"
                 ));
-        Aluno aluno = alunoRepository.findById(dto.alunoId())
+        Aluno aluno = alunoRepository.findByIdAndEstudioId(dto.alunoId(), professor.getEstudio().getId())
                 .orElseThrow(() -> new RecursoNaoEncontradoException(
                         "Aluno não encontrado"
                 ));
@@ -67,8 +67,12 @@ public class FichaDeAulaService {
 
     //Método para listar todas as fichas de aula do aluno
     @Transactional(readOnly = true)
-    public List<FichaDeAulaDTO> listarFichasDeAula(Integer alunoId){
-        List<FichaDeAula> fichas = repository.findByAlunoIdOrderByDataAulaDesc(alunoId);
+    public List<FichaDeAulaDTO> listarFichasDeAula(Integer alunoId, Authentication authentication){
+        Professor professor = professorRepository.findByEmail(authentication.getName())
+                .orElseThrow(() -> new RecursoNaoEncontradoException(
+                        "Professor autenticado não encontrado"
+                ));
+        List<FichaDeAula> fichas = repository.findByAlunoIdAndAlunoEstudioIdOrderByDataAulaDesc(alunoId, professor.getEstudio().getId());
         return fichas.stream()
                 .map(fichaDeAulaMapper::toDTO)
                 .toList();
@@ -76,8 +80,12 @@ public class FichaDeAulaService {
 
     //Método para buscar uma ficha de aula pelo id
     @Transactional(readOnly = true)
-    public FichaDeAulaDTO fichaAulaID(Integer id){
-        FichaDeAula ficha = repository.findById(id)
+    public FichaDeAulaDTO fichaAulaID(Integer id, Authentication authentication){
+        Professor professor = professorRepository.findByEmail(authentication.getName())
+                .orElseThrow(() -> new RecursoNaoEncontradoException(
+                        "Professor autenticado não encontrado"
+                ));
+        FichaDeAula ficha = repository.findByIdAndAlunoEstudioId(id, professor.getEstudio().getId())
                 .orElseThrow(() -> new RecursoNaoEncontradoException(
                         "Ficha de aula não encontrada"
                 ));
@@ -86,8 +94,12 @@ public class FichaDeAulaService {
 
     //Método para editar uma ficha de aluna do aluno
     @Transactional
-    public FichaDeAulaDTO editarFichaAula(Integer id, CriarFichaAulaDTO dto) {
-        FichaDeAula ficha = repository.findById(id)
+    public FichaDeAulaDTO editarFichaAula(Integer id, CriarFichaAulaDTO dto, Authentication authentication) {
+        Professor professor = professorRepository.findByEmail(authentication.getName())
+                .orElseThrow(() -> new RecursoNaoEncontradoException(
+                        "Professor autenticado não encontrado"
+                ));
+        FichaDeAula ficha = repository.findByIdAndAlunoEstudioId(id, professor.getEstudio().getId())
                 .orElseThrow(() -> new RecursoNaoEncontradoException(
                         "Ficha de aula não encontrada"
                 ));
@@ -107,14 +119,17 @@ public class FichaDeAulaService {
                 );
             }
         }
-        FichaDeAula fichaAtualizada = repository.save(ficha);
-        return fichaDeAulaMapper.toDTO(fichaAtualizada);
+        return fichaDeAulaMapper.toDTO(ficha);
     }
 
     //Método para deletar uma ficha de aula de um aluno
     @Transactional
-    public String deletarFichaAula(Integer id){
-        FichaDeAula ficha = repository.findById(id)
+    public String deletarFichaAula(Integer id, Authentication authentication){
+        Professor professor = professorRepository.findByEmail(authentication.getName())
+                .orElseThrow(() -> new RecursoNaoEncontradoException(
+                        "Professor autenticado não encontrado"
+                ));
+        FichaDeAula ficha = repository.findByIdAndAlunoEstudioId(id, professor.getEstudio().getId())
                 .orElseThrow(() -> new RecursoNaoEncontradoException(
                         "Ficha de aula não encontrada"
                 ));

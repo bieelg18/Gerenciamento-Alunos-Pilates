@@ -23,8 +23,6 @@ public class ProfessorService {
     @Transactional
     public String alterarSenha(Authentication authentication, AlterarSenhaDTO dto) {
 
-        System.out.println("=== ALTERAÇÃO DE SENHA ===");
-
         String email = authentication.getName();
         System.out.println("Email autenticado: " + email);
 
@@ -33,14 +31,10 @@ public class ProfessorService {
                         "Professor autenticado não encontrado"
                 ));
 
-        System.out.println("Professor encontrado: " + professor.getEmail());
-
         boolean senhaCorreta = passwordEncoder.matches(
                 dto.senhaAtual(),
                 professor.getSenhaHash()
         );
-
-        System.out.println("Senha atual confere: " + senhaCorreta);
 
         if (!senhaCorreta) {
             throw new ResponseStatusException(
@@ -52,8 +46,6 @@ public class ProfessorService {
         professor.setSenhaHash(passwordEncoder.encode(dto.novaSenha()));
 
         repository.save(professor);
-
-        System.out.println("Nova senha salva!");
 
         return "Senha alterada com sucesso!";
     }

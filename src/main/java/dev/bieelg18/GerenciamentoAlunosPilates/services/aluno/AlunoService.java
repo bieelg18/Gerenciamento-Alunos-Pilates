@@ -5,6 +5,7 @@ import dev.bieelg18.GerenciamentoAlunosPilates.model.dto.aluno.AlunoDTO;
 import dev.bieelg18.GerenciamentoAlunosPilates.model.dto.aluno.AlunoResumoDTO;
 import dev.bieelg18.GerenciamentoAlunosPilates.model.dto.aluno.CriarAlunoDTO;
 import dev.bieelg18.GerenciamentoAlunosPilates.model.entity.aluno.Aluno;
+import dev.bieelg18.GerenciamentoAlunosPilates.model.entity.professor.Professor;
 import dev.bieelg18.GerenciamentoAlunosPilates.model.mapper.aluno.AlunoMapper;
 import dev.bieelg18.GerenciamentoAlunosPilates.model.mapper.aluno.AlunoResumoMapper;
 import dev.bieelg18.GerenciamentoAlunosPilates.model.mapper.aluno.CriarAlunoMapper;
@@ -29,16 +30,27 @@ public class AlunoService {
 
     //Método para cadastrar um novo aluno
     @Transactional
-    public String cadastrarAluno(CriarAlunoDTO dto){
+    public String cadastrarAluno(CriarAlunoDTO dto, Authentication authentication){
+        String email = authentication.getName();
+        Professor professor = professorRepository.findByEmail(email)
+                .orElseThrow(() -> new RecursoNaoEncontradoException(
+                        "Professor autenticado não encontrado"
+                ));
         Aluno aluno = criarAlunoMapper.toEntity(dto);
+        aluno.setEstudio(professor.getEstudio());
         repository.save(aluno);
         return  "Aluno cadastrado com sucesso!";
     }
 
     //Método para listar todos os alunos cadastrados
     @Transactional(readOnly = true)
-    public List<AlunoResumoDTO> listarAlunos(){
-        List<Aluno> alunos = repository.findAllByOrderByNomeAsc();
+    public List<AlunoResumoDTO> listarAlunos(Authentication authentication){
+        String email = authentication.getName();
+        Professor professor = professorRepository.findByEmail(email)
+                .orElseThrow(() -> new RecursoNaoEncontradoException(
+                        "Professor autenticado não autenticado"
+                ));
+        List<Aluno> alunos = repository.findAllByEstudioIdOrderByNomeAsc(professor.getEstudio().getId());
         return alunos.stream()
                 .map(alunoResumoMapper::toDTO)
                 .toList();
@@ -46,8 +58,14 @@ public class AlunoService {
 
     //Método para buscar um aluno pelo ID
     @Transactional(readOnly = true)
-    public AlunoDTO alunoID(Integer id){
-        Aluno aluno = repository.findById(id)
+    public AlunoDTO alunoID(Integer id, Authentication authentication){
+        String email = authentication.getName();
+        Professor professor = professorRepository.findByEmail(email)
+                .orElseThrow(() -> new RecursoNaoEncontradoException(
+                        "Professor autenticado não encontrado"
+                ));
+        Long estudioId = professor.getEstudio().getId();
+        Aluno aluno = repository.findByIdAndEstudioId(id,estudioId)
                 .orElseThrow(() -> new RecursoNaoEncontradoException(
                         "Aluno com o ID " + id + " não encontrado"
                 ));
@@ -56,8 +74,14 @@ public class AlunoService {
 
     //Método para buscar alunos pelo nome
     @Transactional(readOnly = true)
-    public List<AlunoResumoDTO> alunoNome(String nome){
-        List<Aluno> alunos = repository.findByNomeContainingIgnoreCaseOrderByNomeAsc(nome);
+    public List<AlunoResumoDTO> alunoNome(String nome, Authentication authentication){
+        String email = authentication.getName();
+        Professor professor = professorRepository.findByEmail(email)
+                .orElseThrow(() -> new RecursoNaoEncontradoException(
+                        "Professor autenticado não encontrado"
+                ));
+        Long estudioId = professor.getEstudio().getId();
+        List<Aluno> alunos = repository.findByEstudioIdAndNomeContainingIgnoreCaseOrderByNomeAsc(estudioId, nome);
         return alunos.stream()
                 .map(alunoResumoMapper::toDTO)
                 .toList();
@@ -65,8 +89,14 @@ public class AlunoService {
 
     //Método para editar dados de um aluno já cadastrado
     @Transactional
-    public String editarAluno(CriarAlunoDTO dto, Integer id){
-        Aluno aluno = repository.findById(id)
+    public String editarAluno(CriarAlunoDTO dto, Integer id, Authentication authentication){
+        String email = authentication.getName();
+        Professor professor = professorRepository.findByEmail(email)
+                .orElseThrow(() -> new RecursoNaoEncontradoException(
+                        "Professor autenticado não encontrado"
+                ));
+        Long estudioId = professor.getEstudio().getId();
+        Aluno aluno = repository.findByIdAndEstudioId(id, estudioId)
                 .orElseThrow(() -> new RecursoNaoEncontradoException(
                         "Aluno com o ID " + id + " não encontrado"
                 ));
@@ -90,8 +120,14 @@ public class AlunoService {
 
     //Método para deletar um aluno
     @Transactional
-    public String deletarAluno(Integer id){
-        Aluno aluno = repository.findById(id)
+    public String deletarAluno(Integer id, Authentication authentication){
+        String email = authentication.getName();
+        Professor professor = professorRepository.findByEmail(email)
+                .orElseThrow(() -> new RecursoNaoEncontradoException(
+                        "Professor autenticado não encontrado"
+                ));
+        Long estudioId = professor.getEstudio().getId();
+        Aluno aluno = repository.findByIdAndEstudioId(id, estudioId)
                 .orElseThrow(() -> new RecursoNaoEncontradoException(
                         "Aluno com o ID " + id + " não encontrado"
                 ));

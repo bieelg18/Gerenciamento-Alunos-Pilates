@@ -1,6 +1,7 @@
 package dev.bieelg18.GerenciamentoAlunosPilates.model.entity.professor;
 
 import dev.bieelg18.GerenciamentoAlunosPilates.model.entity.anamnese.Anamnese;
+import dev.bieelg18.GerenciamentoAlunosPilates.model.entity.estudio.Estudio;
 import dev.bieelg18.GerenciamentoAlunosPilates.model.entity.fichaAula.FichaDeAula;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -41,6 +42,10 @@ public class Professor implements UserDetails {
 
     @Column(nullable = false)
     private boolean ativo = true;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "estudio_id", nullable = false)
+    private Estudio estudio;
 
     @OneToMany(mappedBy = "professor")
     private List<FichaDeAula> fichaDeAulas;
