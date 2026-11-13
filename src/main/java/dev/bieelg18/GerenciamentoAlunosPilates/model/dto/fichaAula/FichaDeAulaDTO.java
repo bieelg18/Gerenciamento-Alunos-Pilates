@@ -1,5 +1,6 @@
 package dev.bieelg18.GerenciamentoAlunosPilates.model.dto.fichaAula;
 
+import dev.bieelg18.GerenciamentoAlunosPilates.model.entity.fichaAula.Acessorios;
 import dev.bieelg18.GerenciamentoAlunosPilates.model.entity.fichaAula.Aparelhos;
 import dev.bieelg18.GerenciamentoAlunosPilates.model.entity.fichaAula.AvaliacaoPowerHouse;
 import dev.bieelg18.GerenciamentoAlunosPilates.model.entity.fichaAula.EstadoDor;
@@ -25,6 +26,12 @@ public record FichaDeAulaDTO(
         String observacoes,
         Integer idProfessor,
         String nomeProfessor,
-        Turno turno
+        Turno turno,
+        String respiracao,
+        String concentracao,
+        String precisao,
+        String fluidez,
+        String controle,
+        Set<Acessorios> acessorios
 ) {
 }

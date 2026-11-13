@@ -16,7 +16,7 @@
     <script src="/js/ficha-aula.js" defer></script>
     <link rel="stylesheet" href="/css/alterar-senha.css">
 
-    <script src="/js/api.js" defer></script>
+
     <script src="/js/alterar-senha.js" defer></script>
 </head>
 <body>
@@ -138,6 +138,78 @@
                     <input type="radio" name="avaliacaoPowerHouse" value="RUIM">
                     <span>Ruim</span>
                 </label>
+            </div>
+        </section>
+
+
+        <section class="form-card">
+            <div class="card-heading">
+                <span class="section-kicker">AVALIAÇÃO DO MOVIMENTO</span>
+                <h2>Princípios do Pilates</h2>
+                <p>Registre como o aluno executou os movimentos durante a aula.</p>
+            </div>
+
+            <div class="form-grid">
+                <label class="field">
+                    Respiração
+                    <textarea name="respiracao" rows="3" maxlength="2000"
+                              placeholder="Descreva como o aluno coordenou a respiração durante os movimentos..."></textarea>
+                </label>
+
+                <label class="field">
+                    Concentração
+                    <textarea name="concentracao" rows="3" maxlength="2000"
+                              placeholder="Descreva o nível de atenção e concentração do aluno..."></textarea>
+                </label>
+
+                <label class="field">
+                    Precisão
+                    <textarea name="precisao" rows="3" maxlength="2000"
+                              placeholder="Descreva a precisão, o alinhamento e a qualidade dos movimentos..."></textarea>
+                </label>
+
+                <label class="field">
+                    Fluidez
+                    <textarea name="fluidez" rows="3" maxlength="2000"
+                              placeholder="Descreva se o aluno realizou os movimentos de forma contínua e harmoniosa..."></textarea>
+                </label>
+
+                <label class="field">
+                    Controle
+                    <textarea name="controle" rows="3" maxlength="2000"
+                              placeholder="Descreva o controle de força, amplitude e velocidade dos movimentos..."></textarea>
+                </label>
+            </div>
+        </section>
+
+        <section class="form-card">
+            <div class="card-heading">
+                <span class="section-kicker">RECURSOS UTILIZADOS</span>
+                <h2>Acessórios de Pilates</h2>
+                <p>Selecione todos os acessórios utilizados durante esta aula.</p>
+            </div>
+
+            <div class="choice-grid" id="acessorios-container">
+                <label class="choice-card"><input type="checkbox" name="acessorios" value="BOLA_SUICA"><span>Bola suíça</span></label>
+                <label class="choice-card"><input type="checkbox" name="acessorios" value="MAGIC_CIRCLE"><span>Magic Circle</span></label>
+                <label class="choice-card"><input type="checkbox" name="acessorios" value="HALTERES"><span>Halteres</span></label>
+                <label class="choice-card"><input type="checkbox" name="acessorios" value="FAIXA_ELASTICA"><span>Faixa elástica</span></label>
+                <label class="choice-card"><input type="checkbox" name="acessorios" value="BOLA_FEIJAO"><span>Bola feijão</span></label>
+                <label class="choice-card"><input type="checkbox" name="acessorios" value="DISCO_EQUILIBRIO"><span>Disco de equilíbrio</span></label>
+                <label class="choice-card"><input type="checkbox" name="acessorios" value="MEIA_LUA"><span>Meia-lua</span></label>
+                <label class="choice-card"><input type="checkbox" name="acessorios" value="CANELEIRA"><span>Caneleira</span></label>
+                <label class="choice-card"><input type="checkbox" name="acessorios" value="FOAM_ROLLER"><span>Foam Roller</span></label>
+                <label class="choice-card"><input type="checkbox" name="acessorios" value="OVERBALL"><span>Overball</span></label>
+                <label class="choice-card"><input type="checkbox" name="acessorios" value="BOSU"><span>Bosu</span></label>
+                <label class="choice-card"><input type="checkbox" name="acessorios" value="STEP"><span>Step</span></label>
+                <label class="choice-card"><input type="checkbox" name="acessorios" value="BASTAO_MADEIRA"><span>Bastão de madeira</span></label>
+                <label class="choice-card"><input type="checkbox" name="acessorios" value="TAPETINHO"><span>Tapetinho</span></label>
+                <label class="choice-card"><input type="checkbox" name="acessorios" value="ROLO_LIBERACAO_MIOFASCIAL"><span>Rolo de liberação miofascial</span></label>
+                <label class="choice-card"><input type="checkbox" name="acessorios" value="BOLINHAS_OURICO"><span>Bolinhas ouriço</span></label>
+                <label class="choice-card"><input type="checkbox" name="acessorios" value="MEIA_BOLA_EQUILIBRIO"><span>Meia bola de equilíbrio</span></label>
+                <label class="choice-card"><input type="checkbox" name="acessorios" value="MAGIC_WHEEL"><span>Magic Wheel</span></label>
+                <label class="choice-card"><input type="checkbox" name="acessorios" value="CAIXA"><span>Caixa</span></label>
+                <label class="choice-card"><input type="checkbox" name="acessorios" value="DISCO_ROTACAO"><span>Disco de rotação</span></label>
             </div>
         </section>
 

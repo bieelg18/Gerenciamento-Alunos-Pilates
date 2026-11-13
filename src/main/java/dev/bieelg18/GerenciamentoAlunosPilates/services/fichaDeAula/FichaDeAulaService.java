@@ -19,6 +19,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashSet;
 import java.util.List;
 
 @Service
@@ -44,6 +45,11 @@ public class FichaDeAulaService {
                         "Aluno não encontrado"
                 ));
         FichaDeAula ficha = criarFichaAulaMapper.toEntity(dto);
+        ficha.setAcessorios(
+                dto.acessorios() != null
+                ? new HashSet<>(dto.acessorios())
+                        : new HashSet<>()
+        );
         ficha.setAluno(aluno);
         ficha.setProfessor(professor);
         if (dto.condicaoDorChegada() == EstadoDor.SEM_DOR){
@@ -104,6 +110,10 @@ public class FichaDeAulaService {
                         "Ficha de aula não encontrada"
                 ));
         fichaDeAulaMapper.atualizar(dto, ficha);
+        ficha.getAcessorios().clear();
+        if (dto.acessorios() != null){
+            ficha.getAcessorios().addAll(dto.acessorios());
+        }
         if (dto.condicaoDorChegada() == EstadoDor.SEM_DOR) {
             ficha.setEscalaDor(null);
             ficha.setLocalizacaoDorChegada(null);

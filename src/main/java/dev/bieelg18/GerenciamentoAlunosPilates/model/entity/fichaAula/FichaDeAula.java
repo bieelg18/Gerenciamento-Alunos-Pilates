@@ -67,6 +67,30 @@ public class FichaDeAula {
 
     private String observacoes;
 
+    @Column(columnDefinition = "TEXT")
+    private String respiracao;
+
+    @Column(columnDefinition = "TEXT")
+    private String concentracao;
+
+    @Column(columnDefinition = "TEXT")
+    private String precisao;
+
+    @Column(columnDefinition = "TEXT")
+    private String fluidez;
+
+    @Column(columnDefinition = "TEXT")
+    private String controle;
+
+    @ElementCollection(targetClass = Acessorios.class)
+    @Enumerated(EnumType.STRING)
+    @CollectionTable(
+            name = "tb_acessorios_ficha",
+            joinColumns = @JoinColumn(name = "ficha_aula_id")
+    )
+    @Column(name = "acessorio")
+    private Set<Acessorios> acessorios = new HashSet<>();
+
     @ManyToOne
     @JoinColumn(name = "aluno_id", nullable = false)
     private Aluno aluno;

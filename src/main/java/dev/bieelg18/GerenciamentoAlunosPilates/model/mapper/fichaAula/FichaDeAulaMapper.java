@@ -22,6 +22,7 @@ public interface FichaDeAulaMapper {
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "aluno", ignore = true)
     @Mapping(target = "professor", ignore = true)
+    @Mapping(target = "acessorios", ignore = true)
     void atualizar(CriarFichaAulaDTO dto, @MappingTarget FichaDeAula ficha);
 
 }

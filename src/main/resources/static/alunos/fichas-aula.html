@@ -16,7 +16,6 @@
     <script src="/js/fichas-aula.js" defer></script>
     <link rel="stylesheet" href="/css/alterar-senha.css">
 
-    <script src="/js/api.js" defer></script>
     <script src="/js/alterar-senha.js" defer></script>
 </head>
 <body>
@@ -106,9 +105,14 @@
 
         <div id="modal-details"></div>
 
-        <button class="primary-button modal-close-button" type="button" id="close-modal-bottom">
-            Fechar ficha
-        </button>
+        <div class="modal-actions">
+            <button class="modal-edit-button" type="button" id="edit-lesson-button" hidden>
+                Editar ficha
+            </button>
+            <button class="primary-button modal-close-button" type="button" id="close-modal-bottom">
+                Fechar ficha
+            </button>
+        </div>
 
     </div>
 </dialog>
